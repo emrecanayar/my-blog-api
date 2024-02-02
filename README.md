@@ -1,2 +1,2 @@
-# CleanArchitectureTemplate
-.NET Core Clean Architecture Template Project
+# API Blog Project
+
