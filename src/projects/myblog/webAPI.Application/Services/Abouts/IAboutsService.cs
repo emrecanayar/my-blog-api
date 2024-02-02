@@ -1,4 +1,3 @@
-using Application.Features.Abouts.Commands.Create;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
@@ -25,7 +24,6 @@ public interface IAboutsService
         bool enableTracking = true,
         CancellationToken cancellationToken = default
     );
-    Task<About> AddAsync(CreateAboutCommand createAboutCommand);
     Task<About> UpdateAsync(About about);
     Task<About> DeleteAsync(About about, bool permanent = false);
 }

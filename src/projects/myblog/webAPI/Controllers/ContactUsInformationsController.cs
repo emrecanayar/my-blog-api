@@ -1,6 +1,3 @@
-using Application.Features.ContactUsInformations.Commands.Create;
-using Application.Features.ContactUsInformations.Commands.Delete;
-using Application.Features.ContactUsInformations.Commands.Update;
 using Application.Features.ContactUsInformations.Queries.GetById;
 using Application.Features.ContactUsInformations.Queries.GetList;
 using Core.Application.Requests;
@@ -15,29 +12,6 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class ContactUsInformationsController : BaseController
 {
-    [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateContactUsInformationCommand createContactUsInformationCommand)
-    {
-        CustomResponseDto<CreatedContactUsInformationResponse> response = await Mediator.Send(createContactUsInformationCommand);
-
-        return Created(uri: "", response);
-    }
-
-    [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateContactUsInformationCommand updateContactUsInformationCommand)
-    {
-        CustomResponseDto<UpdatedContactUsInformationResponse> response = await Mediator.Send(updateContactUsInformationCommand);
-
-        return Ok(response);
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
-    {
-        CustomResponseDto<DeletedContactUsInformationResponse> response = await Mediator.Send(new DeleteContactUsInformationCommand { Id = id });
-
-        return Ok(response);
-    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id)

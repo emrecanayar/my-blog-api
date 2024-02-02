@@ -1,7 +1,5 @@
-using Application.Features.Abouts.Commands.Create;
 using Application.Features.Abouts.Rules;
 using Application.Services.Repositories;
-using AutoMapper;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
@@ -13,14 +11,10 @@ namespace Application.Services.Abouts;
 public class AboutsManager : IAboutsService
 {
     private readonly IAboutRepository _aboutRepository;
-    private readonly IMapper _mapper;
-    private readonly AboutBusinessRules _aboutBusinessRules;
 
-    public AboutsManager(IAboutRepository aboutRepository, AboutBusinessRules aboutBusinessRules, IMapper mapper)
+    public AboutsManager(IAboutRepository aboutRepository, AboutBusinessRules aboutBusinessRules)
     {
         _aboutRepository = aboutRepository;
-        _aboutBusinessRules = aboutBusinessRules;
-        _mapper = mapper;
     }
 
     public async Task<About?> GetAsync(
@@ -57,15 +51,6 @@ public class AboutsManager : IAboutsService
             cancellationToken
         );
         return aboutList;
-    }
-
-    public async Task<About> AddAsync(CreateAboutCommand createAboutCommand)
-    {
-        UploadedFileResponseDto uploadedFile = await _aboutBusinessRules.CheckCarouselItemTokenForAddAsync(createAboutCommand);
-        About about = _mapper.Map<About>(createAboutCommand);
-        MappedAboutItem(uploadedFile, about);
-        About addedCarouselItem = await _aboutRepository.AddAsync(about);
-        return addedCarouselItem;
     }
 
     public async Task<About> UpdateAsync(About about)
