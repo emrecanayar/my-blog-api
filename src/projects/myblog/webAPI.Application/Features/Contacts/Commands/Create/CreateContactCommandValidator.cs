@@ -17,6 +17,7 @@ public class CreateContactCommandValidator : AbstractValidator<CreateContactComm
                                    .MaximumLength(15).WithMessage("Telefon numarasý maksimum 15 karakter olmalýdýr.")
                                    .Matches(@"^\+?[0-9]{1,15}$").WithMessage("Telefon numarasý sadece sayýsal karakterler içermelidir.");
 
-        RuleFor(c => c.Message).NotEmpty().WithMessage("Mesaj alaný boþ olamaz.").MaximumLength(500).WithMessage("Mesaj alaný maksimum 500 karakter olmalýdýr.");
+        RuleFor(c => c.Message).NotEmpty().WithMessage("Mesaj alaný boþ olamaz.")
+                               .MaximumLength(500).WithMessage("Mesaj alaný maksimum 500 karakter olmalýdýr.");
     }
 }

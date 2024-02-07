@@ -15,6 +15,7 @@
         public const string ABOUT = "Abouts";
         public const string CONTACT_US_INFORMATION = "ContactUsInformations";
         public const string CONTACT = "Contacts";
+        public const string CATEGORY = "Categories";
 
     }
 }

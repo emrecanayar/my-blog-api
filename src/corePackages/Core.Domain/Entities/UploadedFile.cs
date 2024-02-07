@@ -12,6 +12,7 @@ namespace Core.Domain.Entities
         public string Extension { get; set; }
         public FileType? FileType { get; set; } = null;
         public ICollection<About> Abouts { get; set; }
+        public ICollection<Category> Categories { get; set; }
 
         public UploadedFile()
         {
@@ -20,6 +21,7 @@ namespace Core.Domain.Entities
             Path = string.Empty;
             Extension = string.Empty;
             Abouts = new HashSet<About>();
+            Categories = new HashSet<Category>();
         }
 
         public UploadedFile(Guid id, string token, string fileName, string? directory, string path, string extension, FileType? fileType)
@@ -32,6 +34,7 @@ namespace Core.Domain.Entities
             Extension = extension;
             FileType = fileType;
             Abouts = new HashSet<About>();
+            Categories = new HashSet<Category>();
         }
     }
 }
