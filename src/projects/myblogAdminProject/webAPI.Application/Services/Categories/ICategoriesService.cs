@@ -1,5 +1,6 @@
-using Core.Persistence.Paging;
+using Application.Features.Categories.Commands.Create;
 using Core.Domain.Entities;
+using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
@@ -27,4 +28,5 @@ public interface ICategoriesService
     Task<Category> AddAsync(Category category);
     Task<Category> UpdateAsync(Category category);
     Task<Category> DeleteAsync(Category category, bool permanent = false);
+    Task<Category> AddCategoryWithFileAsync(CreateCategoryCommand createCategoryCommand);
 }

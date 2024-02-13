@@ -5,6 +5,7 @@ using Core.Application.Pipelines.Authorization;
 using Core.Application.ResponseTypes.Concrete;
 using Core.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using static Application.Features.Categories.Constants.CategoriesOperationClaims;
 
@@ -31,7 +32,7 @@ public class GetByIdCategoryQuery : IRequest<CustomResponseDto<GetByIdCategoryRe
 
         public async Task<CustomResponseDto<GetByIdCategoryResponse>> Handle(GetByIdCategoryQuery request, CancellationToken cancellationToken)
         {
-            Category? category = await _categoryRepository.GetAsync(predicate: c => c.Id == request.Id, cancellationToken: cancellationToken);
+            Category? category = await _categoryRepository.GetAsync(predicate: c => c.Id == request.Id, include: x => x.Include(x => x.CategoryUploadedFiles), cancellationToken: cancellationToken);
             await _categoryBusinessRules.CategoryShouldExistWhenSelected(category);
 
             GetByIdCategoryResponse response = _mapper.Map<GetByIdCategoryResponse>(category);

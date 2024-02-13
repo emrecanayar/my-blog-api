@@ -16,6 +16,7 @@
         public const string CONTACT_US_INFORMATION = "ContactUsInformations";
         public const string CONTACT = "Contacts";
         public const string CATEGORY = "Categories";
+        public const string CATEGORY_UPLOADED_FILE = "CategoryUploadedFiles";
 
     }
 }

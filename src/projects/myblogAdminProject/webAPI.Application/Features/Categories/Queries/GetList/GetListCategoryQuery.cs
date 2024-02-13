@@ -7,6 +7,7 @@ using Core.Application.ResponseTypes.Concrete;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using static Application.Features.Categories.Constants.CategoriesOperationClaims;
 
@@ -17,6 +18,12 @@ public class GetListCategoryQuery : IRequest<CustomResponseDto<GetListResponse<G
     public PageRequest PageRequest { get; set; }
 
     public string[] Roles => new[] { Admin, Read };
+
+    public GetListCategoryQuery()
+    {
+        PageRequest = default!;
+
+    }
 
     public class GetListCategoryQueryHandler : IRequestHandler<GetListCategoryQuery, CustomResponseDto<GetListResponse<GetListCategoryListItemDto>>>
     {
@@ -34,6 +41,7 @@ public class GetListCategoryQuery : IRequest<CustomResponseDto<GetListResponse<G
             IPaginate<Category> categories = await _categoryRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
+                include: x => x.Include(x => x.CategoryUploadedFiles),
                 cancellationToken: cancellationToken
             );
 

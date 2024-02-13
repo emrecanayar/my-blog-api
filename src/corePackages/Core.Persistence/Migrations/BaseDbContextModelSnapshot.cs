@@ -163,6 +163,81 @@ namespace Core.Persistence.Migrations
                     b.ToTable("Categories", (string)null);
                 });
 
+            modelBuilder.Entity("Core.Domain.Entities.CategoryUploadedFile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasMaxLength(250)
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CategoryId");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletedDate");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("ModifiedBy");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ModifiedDate");
+
+                    b.Property<string>("NewPath")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)")
+                        .HasColumnName("NewPath");
+
+                    b.Property<string>("OldPath")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)")
+                        .HasColumnName("OldPath");
+
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1)
+                        .HasColumnName("Status");
+
+                    b.Property<Guid>("UploadedFileId")
+                        .HasMaxLength(250)
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("UploadedFileId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UploadedFileId");
+
+                    b.ToTable("CategoryUploadedFiles", (string)null);
+                });
+
             modelBuilder.Entity("Core.Domain.Entities.Contact", b =>
                 {
                     b.Property<Guid>("Id")
@@ -757,9 +832,9 @@ namespace Core.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a88ce11e-6617-4737-99d7-d09d169fa46c"),
+                            Id = new Guid("53d61cc4-d55e-4ec3-8f9b-74fc17b4eecf"),
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2024, 2, 5, 20, 6, 22, 882, DateTimeKind.Local).AddTicks(1638),
+                            CreatedDate = new DateTime(2024, 2, 13, 17, 43, 28, 190, DateTimeKind.Local).AddTicks(7867),
                             IsDeleted = false,
                             Name = "Admin",
                             Status = 1
@@ -1077,17 +1152,17 @@ namespace Core.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("87f78a24-8cca-4c87-befe-a06430b03c29"),
+                            Id = new Guid("751482fa-5642-4dc8-9db0-9714b5e14c43"),
                             AuthenticatorType = 0,
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2024, 2, 5, 20, 6, 22, 896, DateTimeKind.Local).AddTicks(7337),
+                            CreatedDate = new DateTime(2024, 2, 13, 17, 43, 28, 203, DateTimeKind.Local).AddTicks(3585),
                             CultureType = 0,
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             IsDeleted = false,
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 93, 2, 208, 83, 66, 232, 24, 98, 206, 66, 177, 35, 104, 147, 92, 143, 37, 11, 47, 56, 125, 246, 141, 241, 101, 132, 244, 168, 153, 0, 142, 55, 107, 194, 12, 130, 24, 87, 18, 4, 113, 107, 58, 99, 213, 206, 26, 86, 99, 188, 87, 145, 72, 194, 116, 32, 224, 113, 188, 248, 62, 239, 36, 122 },
-                            PasswordSalt = new byte[] { 126, 211, 169, 206, 164, 21, 199, 233, 212, 102, 104, 44, 242, 110, 79, 142, 190, 137, 44, 242, 10, 137, 79, 48, 88, 28, 213, 211, 161, 83, 184, 56, 160, 233, 88, 9, 219, 8, 146, 97, 23, 129, 234, 11, 180, 77, 53, 42, 244, 86, 130, 36, 3, 85, 153, 213, 177, 110, 81, 117, 56, 73, 82, 201, 101, 78, 171, 249, 108, 135, 4, 155, 190, 5, 209, 79, 169, 75, 175, 101, 17, 67, 62, 18, 50, 58, 246, 158, 90, 59, 81, 94, 129, 45, 100, 81, 196, 234, 102, 236, 171, 205, 138, 196, 126, 188, 163, 193, 251, 2, 27, 172, 216, 50, 33, 203, 134, 198, 142, 137, 213, 164, 164, 213, 109, 242, 87, 76 },
+                            PasswordHash = new byte[] { 222, 235, 191, 112, 161, 223, 198, 37, 92, 225, 41, 38, 84, 50, 127, 233, 49, 251, 45, 203, 170, 60, 109, 47, 7, 109, 242, 40, 151, 51, 89, 47, 76, 159, 144, 51, 66, 6, 34, 130, 53, 61, 83, 220, 151, 118, 121, 68, 65, 193, 135, 151, 27, 50, 26, 54, 17, 97, 91, 205, 230, 38, 158, 112 },
+                            PasswordSalt = new byte[] { 6, 0, 170, 230, 221, 106, 44, 69, 254, 181, 107, 135, 54, 208, 186, 120, 200, 228, 92, 98, 218, 159, 133, 55, 25, 136, 12, 203, 102, 101, 98, 152, 63, 52, 248, 35, 22, 219, 86, 35, 5, 206, 140, 95, 73, 165, 127, 182, 235, 73, 64, 217, 135, 190, 19, 75, 143, 179, 1, 166, 198, 77, 78, 46, 167, 229, 139, 214, 51, 120, 249, 131, 200, 33, 47, 222, 235, 10, 122, 221, 73, 219, 108, 201, 238, 230, 193, 125, 131, 255, 49, 160, 119, 135, 164, 115, 103, 188, 157, 7, 154, 93, 148, 167, 12, 53, 166, 31, 162, 79, 236, 92, 112, 18, 244, 113, 79, 232, 134, 162, 95, 87, 240, 45, 37, 67, 172, 185 },
                             Status = 1
                         });
                 });
@@ -1156,13 +1231,13 @@ namespace Core.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("59a91c09-75e9-442b-9c80-9082fd98cda6"),
+                            Id = new Guid("deaf24d2-1aeb-4cbb-815f-e0c07f707bc2"),
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2024, 2, 5, 20, 6, 22, 897, DateTimeKind.Local).AddTicks(9572),
+                            CreatedDate = new DateTime(2024, 2, 13, 17, 43, 28, 203, DateTimeKind.Local).AddTicks(8832),
                             IsDeleted = false,
-                            OperationClaimId = new Guid("a88ce11e-6617-4737-99d7-d09d169fa46c"),
+                            OperationClaimId = new Guid("53d61cc4-d55e-4ec3-8f9b-74fc17b4eecf"),
                             Status = 1,
-                            UserId = new Guid("87f78a24-8cca-4c87-befe-a06430b03c29")
+                            UserId = new Guid("751482fa-5642-4dc8-9db0-9714b5e14c43")
                         });
                 });
 
@@ -1184,6 +1259,25 @@ namespace Core.Persistence.Migrations
                         .HasForeignKey("UploadedFileId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("UploadedFile");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entities.CategoryUploadedFile", b =>
+                {
+                    b.HasOne("Core.Domain.Entities.Category", "Category")
+                        .WithMany("CategoryUploadedFiles")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Domain.Entities.UploadedFile", "UploadedFile")
+                        .WithMany("CategoryUploadedFiles")
+                        .HasForeignKey("UploadedFileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("UploadedFile");
                 });
@@ -1251,6 +1345,11 @@ namespace Core.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Core.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("CategoryUploadedFiles");
+                });
+
             modelBuilder.Entity("Core.Domain.Entities.Language", b =>
                 {
                     b.Navigation("Dictionaries");
@@ -1266,6 +1365,8 @@ namespace Core.Persistence.Migrations
                     b.Navigation("Abouts");
 
                     b.Navigation("Categories");
+
+                    b.Navigation("CategoryUploadedFiles");
                 });
 
             modelBuilder.Entity("Core.Domain.Entities.User", b =>

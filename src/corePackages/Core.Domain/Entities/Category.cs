@@ -9,10 +9,12 @@ namespace Core.Domain.Entities
         public bool IsPopular { get; set; }
         public Guid UploadedFileId { get; set; }
         public UploadedFile UploadedFile { get; set; }
+        public ICollection<CategoryUploadedFile> CategoryUploadedFiles { get; set; }
 
         public Category()
         {
             UploadedFile = default!;
+            CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
         }
 
         public Category(Guid id, string name, string description, bool isPopular)
@@ -22,6 +24,7 @@ namespace Core.Domain.Entities
             Description = description;
             IsPopular = isPopular;
             UploadedFile = default!;
+            CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
         }
     }
 }

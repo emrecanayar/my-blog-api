@@ -1,21 +1,29 @@
+using Application.Features.Categories.Commands.Create;
 using Application.Features.Categories.Rules;
+using Application.Services.CategoryUploadedFiles;
 using Application.Services.Repositories;
+using AutoMapper;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using webAPI.Application.Features.UploadedFiles.Dtos;
 
 namespace Application.Services.Categories;
 
 public class CategoriesManager : ICategoriesService
 {
     private readonly ICategoryRepository _categoryRepository;
+    private readonly ICategoryUploadedFilesService _categoryUploadedFilesService;
+    private readonly IMapper _mapper;
     private readonly CategoryBusinessRules _categoryBusinessRules;
 
-    public CategoriesManager(ICategoryRepository categoryRepository, CategoryBusinessRules categoryBusinessRules)
+    public CategoriesManager(ICategoryRepository categoryRepository, CategoryBusinessRules categoryBusinessRules, IMapper mapper, ICategoryUploadedFilesService categoryUploadedFilesService)
     {
         _categoryRepository = categoryRepository;
         _categoryBusinessRules = categoryBusinessRules;
+        _mapper = mapper;
+        _categoryUploadedFilesService = categoryUploadedFilesService;
     }
 
     public async Task<Category?> GetAsync(
@@ -74,4 +82,42 @@ public class CategoriesManager : ICategoriesService
 
         return deletedCategory;
     }
+
+    public async Task<Category> AddCategoryWithFileAsync(CreateCategoryCommand createCategoryCommand)
+    {
+        var uploadedFileResponseDto = await _categoryBusinessRules.CheckCategoryForAddAsync(createCategoryCommand);
+        var category = _mapper.Map<Category>(createCategoryCommand);
+        MappedCategoryItem(uploadedFileResponseDto, category);
+
+        Category addedCategory = await _categoryRepository.AddAsync(category);
+        await AddUploadedFileInformationAsync(uploadedFileResponseDto, addedCategory);
+        return addedCategory;
+    }
+
+    private async Task AddUploadedFileInformationAsync(UploadedFileResponseDto uploadedFileResponse, Category category)
+    {
+        string fileName = Path.GetFileName(uploadedFileResponse.Path);
+        string newPath = BuildNewPath(fileName);
+
+        await _categoryUploadedFilesService.AddAsync(new CategoryUploadedFile
+        {
+            CategoryId = category.Id,
+            UploadedFileId = uploadedFileResponse.Id,
+            OldPath = uploadedFileResponse.Path,
+            NewPath = newPath,
+        });
+    }
+
+    private string BuildNewPath(string fileName)
+    {
+        return Path.Combine(_categoryBusinessRules.IMG_FOLDER, fileName).Replace("\\", "/");
+    }
+
+    private static void MappedCategoryItem(UploadedFileResponseDto uploadedFile, Category category)
+    {
+        category.UploadedFileId = uploadedFile.Id;
+    }
+
+
 }
+

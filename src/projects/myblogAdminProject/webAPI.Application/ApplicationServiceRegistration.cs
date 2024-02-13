@@ -42,8 +42,8 @@ namespace webAPI.Application
                 configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
                 configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
                 configuration.AddOpenBehavior(typeof(PerformanceBehavior<,>));
-                configuration.AddOpenBehavior(typeof(DbLoggingBehavior<,>));
                 configuration.AddOpenBehavior(typeof(CheckIdBehavior<,>));
+                configuration.AddOpenBehavior(typeof(DbLoggingBehavior<,>));
                 configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
             });
 
