@@ -46,10 +46,10 @@ public class CategoryBusinessRules : BaseBusinessRules
 
             if (uploadedFile is not null) return uploadedFile;
 
-            throw new BusinessException("The uploaded file for Category was not found.");
+            throw new BusinessException("Kategori için yüklenen dosya bulunamadý.");
 
         }
 
-        throw new BusinessException("The loaded token for Category was not found.");
+        throw new BusinessException("Kategori için yüklenen token bulunamadý.");
     }
 }

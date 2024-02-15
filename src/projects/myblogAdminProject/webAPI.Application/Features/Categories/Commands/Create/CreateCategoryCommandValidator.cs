@@ -6,8 +6,8 @@ public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCo
 {
     public CreateCategoryCommandValidator()
     {
-        RuleFor(c => c.Name).NotEmpty();
-        RuleFor(c => c.Description).NotEmpty();
-        RuleFor(c => c.IsPopular).NotEmpty();
+        RuleFor(c => c.Name).NotEmpty().WithMessage("Adý alaný boþ geçilemez").NotNull().WithMessage("Adý alaný boþ geçilemez");
+        RuleFor(c => c.Description).NotEmpty().WithMessage("Açýklama alaný boþ geçilemez.").NotNull().WithMessage("Açýklama alaný boþ geçilemez.");
+        RuleFor(c => c.IsPopular).NotEmpty().WithMessage("Popülerlik durumu belirtilmelidir.").NotNull().WithMessage("Popülerlik durumu belirtilmelidir.");
     }
 }
