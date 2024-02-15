@@ -20,13 +20,13 @@ namespace webAPI.Application.Features.UploadedFiles.Rules
         public async Task FileTokenCanNotBeDuplicatedWhenInserted(string token)
         {
             IPaginate<UploadedFile> result = await _uploadedFileRepository.GetListAsync(d => d.Token == token);
-            if (result.Items.Any()) throw new BusinessException("File token exists");
+            if (result.Items.Any()) throw new BusinessException("Dosya mevcut");
             await Task.CompletedTask;
         }
 
         public void FileShouldExistWhenRequested(UploadedFile projectFile)
         {
-            if (projectFile == null) throw new BusinessException("Requested file does not exist");
+            if (projectFile == null) throw new BusinessException("İstenilen dosya mevcut değil");
         }
 
         public FileType DetectFileType(string filePath)
