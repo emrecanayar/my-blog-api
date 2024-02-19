@@ -1,4 +1,5 @@
 using Application.Features.Categories.Commands.Create;
+using Application.Features.Categories.Commands.Update;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
@@ -29,4 +30,5 @@ public interface ICategoriesService
     Task<Category> UpdateAsync(Category category);
     Task<Category> DeleteAsync(Category category, bool permanent = false);
     Task<Category> AddCategoryWithFileAsync(CreateCategoryCommand createCategoryCommand);
+    Task<Category> UpdateCategoryWithFileAsync(UpdateCategoryCommand updateCategoryCommand);
 }

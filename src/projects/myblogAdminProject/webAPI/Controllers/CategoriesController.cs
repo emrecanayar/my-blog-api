@@ -34,8 +34,8 @@ public class CategoriesController : BaseController
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand updateCategoryCommand)
     {
+        updateCategoryCommand.WebRootPath = _configuration.GetValue<string>("WebRootPath");
         CustomResponseDto<UpdatedCategoryResponse> response = await Mediator.Send(updateCategoryCommand);
-
         return Ok(response);
     }
 

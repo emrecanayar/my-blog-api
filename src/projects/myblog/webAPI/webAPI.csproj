@@ -23,7 +23,28 @@
 
 	<ItemGroup>
 		<Folder Include="logs\NewFolder\" />
-		<Folder Include="wwwroot\Resources\UploadedFiles\DocumentPool\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\Resources\Files\Category\2018-04-14.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2018-05-12.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2018-07-25.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2018-08-14%285%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2022-12-15%281%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2022-12-15%282%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2022-12-15.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2023-01-03%285%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2023-01-04%281%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2023-12-26.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\Screenshot2024-02-09224431.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\Screenshot_5.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\Screenshot_8.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\Screenshot_9.webp" />
+	  <None Include="wwwroot\Resources\Images\About\about.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-05-14.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-13.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-14%281%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-04-04.webp" />
 	</ItemGroup>
 
 	<ItemGroup>

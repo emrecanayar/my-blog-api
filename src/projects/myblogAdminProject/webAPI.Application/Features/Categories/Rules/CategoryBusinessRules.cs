@@ -1,4 +1,5 @@
 using Application.Features.Categories.Commands.Create;
+using Application.Features.Categories.Commands.Update;
 using Application.Features.Categories.Constants;
 using Application.Services.Repositories;
 using Core.Application.Rules;
@@ -12,13 +13,15 @@ namespace Application.Features.Categories.Rules;
 public class CategoryBusinessRules : BaseBusinessRules
 {
     private readonly ICategoryRepository _categoryRepository;
+    private readonly ICategoryUploadedFileRepository _categoryUploadedFileRepository;
     private readonly IUploadedFileService _uploadedFileService;
     public readonly string IMG_FOLDER = Path.Combine("Resources", "Files", typeof(Category).Name);
 
-    public CategoryBusinessRules(ICategoryRepository categoryRepository, IUploadedFileService uploadedFileService)
+    public CategoryBusinessRules(ICategoryRepository categoryRepository, IUploadedFileService uploadedFileService, ICategoryUploadedFileRepository categoryUploadedFileRepository)
     {
         _categoryRepository = categoryRepository;
         _uploadedFileService = uploadedFileService;
+        _categoryUploadedFileRepository = categoryUploadedFileRepository;
     }
 
     public Task CategoryShouldExistWhenSelected(Category? category)
@@ -43,6 +46,28 @@ public class CategoryBusinessRules : BaseBusinessRules
         if (createCategoryCommand.Tokens?.Count > 0)
         {
             UploadedFileResponseDto? uploadedFile = await _uploadedFileService.TransferFile(createCategoryCommand.Tokens[0], IMG_FOLDER, createCategoryCommand.WebRootPath);
+
+            if (uploadedFile is not null) return uploadedFile;
+
+            throw new BusinessException("Kategori için yüklenen dosya bulunamadý.");
+
+        }
+
+        throw new BusinessException("Kategori için yüklenen token bulunamadý.");
+    }
+
+    public async Task<UploadedFileResponseDto> CheckCategoryForUpdateAsync(UpdateCategoryCommand updateCategoryCommand)
+    {
+        if (updateCategoryCommand.Tokens?.Count > 0)
+        {
+            CategoryUploadedFile? categoryUploadedFile = await _categoryUploadedFileRepository.GetAsync(x => x.CategoryId == updateCategoryCommand.Id);
+
+            if (categoryUploadedFile is not null)
+            {
+                await _categoryUploadedFileRepository.DeleteAsync(categoryUploadedFile);
+            }
+
+            UploadedFileResponseDto? uploadedFile = await _uploadedFileService.TransferFile(updateCategoryCommand.Tokens[0], IMG_FOLDER, updateCategoryCommand.WebRootPath);
 
             if (uploadedFile is not null) return uploadedFile;
 

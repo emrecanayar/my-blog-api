@@ -1,4 +1,5 @@
 using Application.Features.Categories.Commands.Create;
+using Application.Features.Categories.Commands.Update;
 using Application.Features.Categories.Rules;
 using Application.Services.CategoryUploadedFiles;
 using Application.Services.Repositories;
@@ -85,13 +86,22 @@ public class CategoriesManager : ICategoriesService
 
     public async Task<Category> AddCategoryWithFileAsync(CreateCategoryCommand createCategoryCommand)
     {
-        var uploadedFileResponseDto = await _categoryBusinessRules.CheckCategoryForAddAsync(createCategoryCommand);
-        var category = _mapper.Map<Category>(createCategoryCommand);
+        UploadedFileResponseDto uploadedFileResponseDto = await _categoryBusinessRules.CheckCategoryForAddAsync(createCategoryCommand);
+        Category category = _mapper.Map<Category>(createCategoryCommand);
         MappedCategoryItem(uploadedFileResponseDto, category);
 
         Category addedCategory = await _categoryRepository.AddAsync(category);
         await AddUploadedFileInformationAsync(uploadedFileResponseDto, addedCategory);
         return addedCategory;
+    }
+    public async Task<Category> UpdateCategoryWithFileAsync(UpdateCategoryCommand updateCategoryCommand)
+    {
+        UploadedFileResponseDto uploadedFileResponseDto = await _categoryBusinessRules.CheckCategoryForUpdateAsync(updateCategoryCommand);
+        Category category = _mapper.Map<Category>(updateCategoryCommand);
+        MappedCategoryItem(uploadedFileResponseDto, category);
+        Category uploadedCategory = await _categoryRepository.UpdateAsync(category);
+        await AddUploadedFileInformationAsync(uploadedFileResponseDto, uploadedCategory);
+        return uploadedCategory;
     }
 
     private async Task AddUploadedFileInformationAsync(UploadedFileResponseDto uploadedFileResponse, Category category)

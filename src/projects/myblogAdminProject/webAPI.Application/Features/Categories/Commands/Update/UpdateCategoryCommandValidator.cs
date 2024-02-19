@@ -10,6 +10,5 @@ public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCo
         RuleFor(c => c.Name).NotEmpty();
         RuleFor(c => c.Description).NotEmpty();
         RuleFor(c => c.IsPopular).NotEmpty();
-        RuleFor(c => c.UploadedFileId).NotEmpty();
     }
 }
