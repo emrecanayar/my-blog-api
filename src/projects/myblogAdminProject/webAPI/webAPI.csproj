@@ -48,6 +48,7 @@
 	  <None Include="wwwroot\Resources\Files\Category\2023-01-03%285%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2023-01-04%281%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2023-01-08.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\2023-06-01.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2023-06-04.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2023-12-26.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\bilgeadamlogo.webp" />
@@ -65,6 +66,7 @@
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-08-14%282%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-13.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-14%281%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-01-04.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-04-04.webp" />
 	</ItemGroup>
 
