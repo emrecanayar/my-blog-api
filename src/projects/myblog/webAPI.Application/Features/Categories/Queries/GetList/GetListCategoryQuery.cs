@@ -14,6 +14,11 @@ public class GetListCategoryQuery : IRequest<CustomResponseDto<GetListResponse<G
 {
     public PageRequest PageRequest { get; set; }
 
+    public GetListCategoryQuery()
+    {
+        PageRequest = default!;
+    }
+
     public class GetListCategoryQueryHandler : IRequestHandler<GetListCategoryQuery, CustomResponseDto<GetListResponse<GetListCategoryListItemDto>>>
     {
         private readonly ICategoryRepository _categoryRepository;
