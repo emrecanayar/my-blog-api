@@ -10,11 +10,13 @@ namespace Core.Domain.Entities
         public Guid UploadedFileId { get; set; }
         public UploadedFile UploadedFile { get; set; }
         public ICollection<CategoryUploadedFile> CategoryUploadedFiles { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
 
         public Category()
         {
             UploadedFile = default!;
             CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
+            Articles = new HashSet<Article>();
         }
 
         public Category(Guid id, string name, string description, bool isPopular)
@@ -25,6 +27,7 @@ namespace Core.Domain.Entities
             IsPopular = isPopular;
             UploadedFile = default!;
             CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
+            Articles = new HashSet<Article>();
         }
     }
 }

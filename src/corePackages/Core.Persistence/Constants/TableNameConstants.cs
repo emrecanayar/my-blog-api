@@ -17,6 +17,9 @@
         public const string CONTACT = "Contacts";
         public const string CATEGORY = "Categories";
         public const string CATEGORY_UPLOADED_FILE = "CategoryUploadedFiles";
+        public const string ARTICLE = "Articles";
+        public const string TAG = "Tags";
+        public const string ARTICLE_UPLOADED_FILE = "ArticleUploadedFiles";
 
     }
 }

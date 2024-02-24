@@ -1,6 +1,6 @@
 ﻿namespace Core.Persistence.Constants
 {
-    public class LengthContraints
+    public static class LengthContraints
     {
         public const int NameMaxLength = 50;
         public const int KeyMaxLength = 256;
@@ -24,6 +24,7 @@
         public const int Country = 30;
         public const int Title = 100;
         public const int Code = 10;
+        public const int Tag = 25;
         public const string MAX = "nvarchar(MAX)";
     }
 }
