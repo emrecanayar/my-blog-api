@@ -14,7 +14,7 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Article, CreateArticleCommand>().ReverseMap();
+        CreateMap<Article, CreateArticleCommand>().ForMember(dest => dest.Tags, opt => opt.Ignore()).ReverseMap().ForMember(dest => dest.Tags, opt => opt.Ignore());
         CreateMap<Article, CreatedArticleResponse>().ReverseMap();
         CreateMap<Article, UpdateArticleCommand>().ReverseMap();
         CreateMap<Article, UpdatedArticleResponse>().ReverseMap();

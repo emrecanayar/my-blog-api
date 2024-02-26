@@ -33,7 +33,7 @@ namespace webAPI.Application.Services.UploadedFileService
                 Extension = uploadedFileDto.Extension,
                 FileType = uploadedFileDto.FileType
             };
-            await this._uploadedFileBusinessRules.FileTokenCanNotBeDuplicatedWhenInserted(uploadedFile.Token);
+
 
             if (uploadedFile.Id != Guid.Empty)
                 await this._uploadedFileRepository.UpdateAsync(uploadedFile);

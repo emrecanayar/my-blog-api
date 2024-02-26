@@ -55,6 +55,7 @@
 	  <None Include="wwwroot\Resources\Files\Category\CQRS.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\c_logo_black.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\netcore.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\oop.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\Screenshot2024-02-09224431.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\Screenshot_1.webp" />

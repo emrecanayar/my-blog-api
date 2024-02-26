@@ -45,6 +45,7 @@
 	  <None Include="wwwroot\Resources\Files\Category\CQRS.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\c_logo_black.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\netcore.webp" />
+	  <None Include="wwwroot\Resources\Files\Category\oop.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\Screenshot2024-02-09224431.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\Screenshot_1.webp" />
@@ -62,7 +63,14 @@
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-13.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2022-12-14%281%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-01-04.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-02-08.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-04-04.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Artboard_7.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download%281%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\maxresdefault.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Screenshot_9.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\test.webp" />
 	</ItemGroup>
 
 	<ItemGroup>
