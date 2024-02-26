@@ -2,14 +2,14 @@ namespace Application.Features.Auth.Constants;
 
 public static class AuthMessages
 {
-    public const string EmailAuthenticatorDontExists = "Email authenticator don't exists.";
-    public const string OtpAuthenticatorDontExists = "Otp authenticator don't exists.";
-    public const string AlreadyVerifiedOtpAuthenticatorIsExists = "Already verified otp authenticator is exists.";
-    public const string EmailActivationKeyDontExists = "Email Activation Key don't exists.";
-    public const string UserDontExists = "User don't exists.";
-    public const string UserHaveAlreadyAAuthenticator = "User have already a authenticator.";
-    public const string RefreshDontExists = "Refresh don't exists.";
-    public const string InvalidRefreshToken = "Invalid refresh token.";
-    public const string UserMailAlreadyExists = "User mail already exists.";
-    public const string PasswordDontMatch = "Password don't match.";
+    public const string EmailAuthenticatorDontExists = "E-posta kimlik doðrulayýcý mevcut deðil.";
+    public const string OtpAuthenticatorDontExists = "Tek seferlik þifre kimlik doðrulayýcý mevcut deðil.";
+    public const string AlreadyVerifiedOtpAuthenticatorIsExists = "Zaten doðrulanmýþ bir tek seferlik þifre kimlik doðrulayýcý mevcut.";
+    public const string EmailActivationKeyDontExists = "E-posta aktivasyon anahtarý mevcut deðil.";
+    public const string UserDontExists = "Kullanýcý mevcut deðil.";
+    public const string UserHaveAlreadyAAuthenticator = "Kullanýcýnýn zaten bir kimlik doðrulayýcý mevcut.";
+    public const string RefreshDontExists = "Yenileme mevcut deðil.";
+    public const string InvalidRefreshToken = "Geçersiz yenileme belirteci.";
+    public const string UserMailAlreadyExists = "Kullanýcý e-postasý zaten mevcut.";
+    public const string PasswordDontMatch = "Þifre uyuþmuyor.";
 }
