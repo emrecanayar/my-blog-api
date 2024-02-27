@@ -1,15 +1,18 @@
+using Application.Features.Articles.Constants;
 using Application.Services.Articles;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.ResponseTypes.Concrete;
 using Core.Domain.Dtos;
 using Core.Domain.Entities;
 using MediatR;
 using System.Net;
 using System.Text.Json.Serialization;
+using static Application.Features.Articles.Constants.ArticlesOperationClaims;
 
 namespace Application.Features.Articles.Commands.Create;
 
-public class CreateArticleCommand : BaseFileTokenDto, IRequest<CustomResponseDto<CreatedArticleResponse>>
+public class CreateArticleCommand : BaseFileTokenDto, IRequest<CustomResponseDto<CreatedArticleResponse>>, ISecuredRequest
 {
     public string Title { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;
@@ -31,6 +34,7 @@ public class CreateArticleCommand : BaseFileTokenDto, IRequest<CustomResponseDto
     [JsonIgnore]
     public string WebRootPath { get; set; } = string.Empty;
 
+    public string[] Roles => [Admin, ArticlesOperationClaims.Create];
 
     public class CreateArticleCommandHandler : IRequestHandler<CreateArticleCommand, CustomResponseDto<CreatedArticleResponse>>
     {

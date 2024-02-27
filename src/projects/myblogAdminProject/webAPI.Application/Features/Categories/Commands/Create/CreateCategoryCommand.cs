@@ -20,7 +20,7 @@ public class CreateCategoryCommand : BaseFileTokenDto, IRequest<CustomResponseDt
     [JsonIgnore]
     public string? WebRootPath { get; set; }
 
-    public string[] Roles => new[] { Admin, Write, CategoriesOperationClaims.Create };
+    public string[] Roles => [Admin, Write, CategoriesOperationClaims.Create];
 
     public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, CustomResponseDto<CreatedCategoryResponse>>
     {

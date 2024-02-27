@@ -41,7 +41,8 @@ namespace webAPI.Application.Features.Categories.Queries.GetListByDynamic
                       dynamic: request.DynamicQuery,
                       index: request.PageRequest.PageIndex,
                       size: request.PageRequest.PageSize,
-                      include: i => i.Include(i => i.CategoryUploadedFiles));
+                      include: i => i.Include(i => i.CategoryUploadedFiles),
+                      cancellationToken: cancellationToken);
 
                 CategoryListModel mappedCategoryListModel = _mapper.Map<CategoryListModel>(categories);
                 return CustomResponseDto<CategoryListModel>.Success((int)HttpStatusCode.OK, mappedCategoryListModel, true);

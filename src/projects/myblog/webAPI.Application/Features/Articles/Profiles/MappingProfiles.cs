@@ -7,6 +7,7 @@ using AutoMapper;
 using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
+using webAPI.Application.Features.Articles.Queries.GetListByDynamic;
 
 namespace Application.Features.Articles.Profiles;
 
@@ -23,5 +24,6 @@ public class MappingProfiles : Profile
         CreateMap<Article, GetByIdArticleResponse>().ReverseMap();
         CreateMap<Article, GetListArticleListItemDto>().ReverseMap();
         CreateMap<IPaginate<Article>, GetListResponse<GetListArticleListItemDto>>().ReverseMap();
+        CreateMap<IPaginate<Article>, ArticleListModel>().ReverseMap();
     }
 }

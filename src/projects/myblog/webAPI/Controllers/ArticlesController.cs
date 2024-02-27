@@ -6,7 +6,9 @@ using Application.Features.Articles.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Articles.Queries.GetListByDynamic;
 using webAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
@@ -61,5 +63,14 @@ public class ArticlesController : BaseController
         GetListArticleQuery getListArticleQuery = new() { PageRequest = pageRequest };
         CustomResponseDto<GetListResponse<GetListArticleListItemDto>> response = await Mediator.Send(getListArticleQuery);
         return Ok(response);
+    }
+
+    [HttpPost("GetListByDynamic")]
+    public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest,
+                                                      [FromBody] DynamicQuery? dynamicQuery = null)
+    {
+        GetListByDynamicArticleQuery getListByDynamicArticleQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+        CustomResponseDto<ArticleListModel> result = await Mediator.Send(getListByDynamicArticleQuery);
+        return Ok(result);
     }
 }

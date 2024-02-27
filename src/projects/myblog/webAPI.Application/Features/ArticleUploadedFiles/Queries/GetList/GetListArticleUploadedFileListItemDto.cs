@@ -7,6 +7,6 @@ public class GetListArticleUploadedFileListItemDto : IDto
     public Guid Id { get; set; }
     public Guid ArticleId { get; set; }
     public Guid UploadedFileId { get; set; }
-    public string OldPath { get; set; }
-    public string NewPath { get; set; }
+    public string OldPath { get; set; } = string.Empty;
+    public string NewPath { get; set; } = string.Empty;
 }
