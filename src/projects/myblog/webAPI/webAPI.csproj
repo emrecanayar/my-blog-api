@@ -26,6 +26,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="wwwroot\Resources\Files\Article\google-görsel-novasta.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\images%283%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-04-11.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-04-14.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-05-12.webp" />
@@ -65,12 +70,30 @@
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-01-04.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-02-08.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2023-04-04.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\aaajpg.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\alinazik.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\arsu-akademi-gorsel-sanatlar.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Artboard_7.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\deadpool-gorsel-big.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download%281%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download%282%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\gorsel-dil-gorsel-kultur.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\gorsel-tasarimcinin-zaman-yolculugu.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\gorsel-zeka-testi.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\images%281%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\images%282%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\images%283%29.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\images.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\maxresdefault%281%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\maxresdefault.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\netcore.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\oop.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\paint-palette-600x600.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Screenshot_9.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\test.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\unnamed.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\water.webp" />
 	</ItemGroup>
 
 	<ItemGroup>
