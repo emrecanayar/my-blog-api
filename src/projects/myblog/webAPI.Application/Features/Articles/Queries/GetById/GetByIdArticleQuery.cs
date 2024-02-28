@@ -2,9 +2,10 @@ using Application.Features.Articles.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.ResponseTypes.Concrete;
-using System.Net;
 using Core.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace Application.Features.Articles.Queries.GetById;
 
@@ -27,12 +28,14 @@ public class GetByIdArticleQuery : IRequest<CustomResponseDto<GetByIdArticleResp
 
         public async Task<CustomResponseDto<GetByIdArticleResponse>> Handle(GetByIdArticleQuery request, CancellationToken cancellationToken)
         {
-            Article? article = await _articleRepository.GetAsync(predicate: a => a.Id == request.Id, cancellationToken: cancellationToken);
+            Article? article = await _articleRepository.GetAsync(
+                predicate: a => a.Id == request.Id,
+                include: x => x.Include(x => x.User).Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles),
+                cancellationToken: cancellationToken);
+
             await _articleBusinessRules.ArticleShouldExistWhenSelected(article);
-
             GetByIdArticleResponse response = _mapper.Map<GetByIdArticleResponse>(article);
-
-          return CustomResponseDto<GetByIdArticleResponse>.Success((int)HttpStatusCode.OK, response, true);
+            return CustomResponseDto<GetByIdArticleResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
     }
 }
