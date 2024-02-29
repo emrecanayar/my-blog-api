@@ -31,6 +31,7 @@
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\water.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-04-11.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-04-14.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-05-12.webp" />
