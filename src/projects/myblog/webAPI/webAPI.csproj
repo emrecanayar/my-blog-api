@@ -26,7 +26,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="wwwroot\Resources\Files\Article\80f10538-7107-4df5-87fd-6f1a5072c938.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\aaajpg.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\alinazik.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\c31d15dc-c22e-4e6a-9266-98cbf681c021.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\google-görsel-novasta.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\gorsel-zeka-testi.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\images%283%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
