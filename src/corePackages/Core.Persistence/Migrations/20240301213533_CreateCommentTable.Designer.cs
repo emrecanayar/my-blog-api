@@ -4,6 +4,7 @@ using Core.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240301213533_CreateCommentTable")]
+    partial class CreateCommentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -492,7 +495,7 @@ namespace Core.Persistence.Migrations
                         .HasDefaultValue(1)
                         .HasColumnName("Status");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasMaxLength(250)
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("UserId");
@@ -1157,7 +1160,7 @@ namespace Core.Persistence.Migrations
                         {
                             Id = new Guid("e41b2335-290e-4c49-a88c-8366cf928375"),
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedDate = new DateTime(2024, 3, 2, 0, 35, 28, 701, DateTimeKind.Local).AddTicks(4028),
                             IsDeleted = false,
                             Name = "Admin",
                             Status = 1
@@ -1538,14 +1541,14 @@ namespace Core.Persistence.Migrations
                             Id = new Guid("19afb672-bf92-47b0-ac84-2997c4320245"),
                             AuthenticatorType = 0,
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedDate = new DateTime(2024, 3, 2, 0, 35, 28, 703, DateTimeKind.Local).AddTicks(6834),
                             CultureType = 0,
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             IsDeleted = false,
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 105, 148, 66, 190, 52, 99, 65, 184, 83, 100, 85, 107, 5, 97, 121, 104, 158, 3, 200, 84, 41, 155, 0, 50, 54, 214, 203, 145, 67, 128, 87, 106, 160, 193, 189, 16, 33, 198, 49, 42, 185, 108, 243, 7, 209, 89, 172, 248, 226, 12, 204, 242, 3, 70, 252, 133, 23, 58, 95, 139, 47, 237, 232, 120 },
-                            PasswordSalt = new byte[] { 200, 7, 108, 87, 250, 88, 243, 237, 134, 14, 155, 248, 114, 202, 139, 169, 159, 89, 64, 241, 49, 41, 72, 83, 79, 27, 79, 138, 114, 217, 174, 62, 41, 188, 50, 38, 63, 159, 3, 55, 32, 14, 95, 47, 46, 183, 122, 129, 194, 249, 46, 9, 254, 142, 105, 182, 230, 145, 26, 117, 155, 92, 254, 100, 22, 0, 209, 81, 140, 178, 57, 1, 43, 152, 93, 0, 243, 188, 185, 164, 175, 228, 0, 239, 90, 86, 92, 60, 55, 207, 92, 126, 116, 184, 139, 227, 179, 160, 40, 104, 84, 22, 180, 250, 244, 237, 166, 1, 197, 183, 97, 164, 31, 78, 204, 59, 23, 152, 51, 22, 7, 251, 0, 174, 78, 238, 219, 149 },
+                            PasswordHash = new byte[] { 28, 132, 218, 157, 95, 180, 241, 123, 243, 210, 251, 108, 128, 91, 54, 34, 5, 104, 176, 212, 20, 230, 106, 138, 65, 38, 91, 22, 167, 206, 234, 186, 85, 63, 144, 148, 119, 144, 9, 244, 248, 242, 201, 15, 57, 174, 15, 109, 213, 177, 159, 108, 170, 124, 208, 201, 44, 242, 250, 150, 147, 72, 242, 239 },
+                            PasswordSalt = new byte[] { 225, 163, 85, 56, 95, 214, 204, 123, 9, 231, 16, 2, 207, 216, 136, 90, 230, 44, 249, 9, 114, 68, 58, 9, 20, 70, 26, 178, 135, 220, 6, 35, 143, 151, 252, 199, 6, 156, 90, 188, 86, 38, 95, 155, 166, 149, 82, 105, 54, 209, 105, 187, 91, 144, 92, 131, 93, 19, 79, 25, 126, 215, 172, 243, 193, 57, 75, 131, 133, 95, 147, 79, 119, 77, 214, 13, 182, 103, 37, 112, 101, 168, 4, 97, 207, 129, 128, 188, 44, 105, 55, 81, 182, 46, 126, 18, 130, 237, 23, 248, 14, 147, 12, 173, 192, 83, 28, 254, 110, 148, 15, 248, 25, 2, 246, 160, 14, 148, 106, 55, 3, 173, 78, 60, 60, 156, 177, 134 },
                             Status = 1
                         });
                 });
@@ -1616,7 +1619,7 @@ namespace Core.Persistence.Migrations
                         {
                             Id = new Guid("827de17a-7223-4246-bda9-7f6caaeec155"),
                             CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedDate = new DateTime(2024, 3, 2, 0, 35, 28, 704, DateTimeKind.Local).AddTicks(4928),
                             IsDeleted = false,
                             OperationClaimId = new Guid("e41b2335-290e-4c49-a88c-8366cf928375"),
                             Status = 1,

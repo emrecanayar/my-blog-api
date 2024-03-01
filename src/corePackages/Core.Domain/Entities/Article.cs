@@ -17,6 +17,7 @@ namespace Core.Domain.Entities
         public User User { get; set; }
         public ICollection<Tag> Tags { get; set; }
         public ICollection<ArticleUploadedFile> ArticleUploadedFiles { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
         public Article()
         {
@@ -24,6 +25,7 @@ namespace Core.Domain.Entities
             User = default!;
             Tags = [];
             ArticleUploadedFiles = [];
+            Comments = [];
         }
 
         public Article(string title, string content, DateTime date, int viewCount, int commentCount, string seoAuthor, string seoDescription, Guid categoryId, Guid userId)
@@ -41,6 +43,7 @@ namespace Core.Domain.Entities
             User = default!;
             Tags = [];
             ArticleUploadedFiles = [];
+            Comments = [];
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Core.Domain.Entities
             OperationClaim = default!;
         }
 
-        public UserOperationClaim(Guid id, Guid userId, Guid operationClaimId)
+        public UserOperationClaim(Guid id, Guid userId, Guid operationClaimId, DateTime createdDate, string createdBy)
             : base()
         {
             Id = id;
@@ -25,6 +25,8 @@ namespace Core.Domain.Entities
             OperationClaimId = operationClaimId;
             User = default!;
             OperationClaim = default!;
+            CreatedBy = createdBy;
+            CreatedDate = createdDate;
         }
     }
 }

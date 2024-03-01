@@ -30,9 +30,15 @@
 	  <None Include="wwwroot\Resources\Files\Article\aaajpg.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\alinazik.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c31d15dc-c22e-4e6a-9266-98cbf681c021.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\Csharp_Logo.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\c_sharp.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\d2238b40-dee4-46ce-856b-3414582c7392.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\d9d9161b-830a-4777-a0a1-798d8f970d99.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\google-görsel-novasta.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\gorsel-dil-gorsel-kultur.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\gorsel-zeka-testi.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\images%283%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\maxresdefault%281%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />

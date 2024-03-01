@@ -17,11 +17,13 @@ namespace Core.Domain.Entities
             Name = name;
         }
 
-        public OperationClaim(Guid id, string name)
+        public OperationClaim(Guid id, string name, DateTime createdDate, string createdBy)
             : base()
         {
             Id = id;
             Name = name;
+            CreatedDate = createdDate;
+            CreatedBy = createdBy;
         }
     }
 }

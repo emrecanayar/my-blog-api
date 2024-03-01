@@ -25,7 +25,7 @@ namespace Core.Persistence.Configurations
         {
             List<UserOperationClaim> userOperationClaims = new();
 
-            UserOperationClaim adminUserOperationClaim = new(id: Guid.NewGuid(), userId: SeedData.AdminUserId, operationClaimId: SeedData.AdminOperationClaimId);
+            UserOperationClaim adminUserOperationClaim = new(id: Guid.Parse("827DE17A-7223-4246-BDA9-7F6CAAEEC155"), userId: SeedData.AdminUserId, operationClaimId: SeedData.AdminOperationClaimId, createdDate: new DateTime(2023, 1, 1, 0, 0, 0, DateTimeKind.Utc), createdBy: "Admin");
             userOperationClaims.Add(adminUserOperationClaim);
 
             return userOperationClaims;

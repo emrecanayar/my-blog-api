@@ -24,8 +24,8 @@ namespace Core.Persistence.Configurations
             HashSet<OperationClaim> seeds =
                 new()
                 {
-                new OperationClaim { Id =SeedData.AdminOperationClaimId, Name = GeneralOperationClaims.Admin }
-                };
+                new OperationClaim { Id = SeedData.AdminOperationClaimId, Name = GeneralOperationClaims.Admin ,CreatedDate = new DateTime(2023, 1, 1,0,0,0,DateTimeKind.Utc) , CreatedBy = "Admin"}
+    };
 
             return seeds;
         }

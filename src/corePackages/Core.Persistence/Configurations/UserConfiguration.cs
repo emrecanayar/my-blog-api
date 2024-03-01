@@ -48,7 +48,9 @@ namespace Core.Persistence.Configurations
                     Email = "admin@admin.com",
                     Status = RecordStatu.Active,
                     PasswordHash = passwordHash,
-                    PasswordSalt = passwordSalt
+                    PasswordSalt = passwordSalt,
+                    CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                    CreatedBy = "Admin",
                 };
             users.Add(adminUser);
 
