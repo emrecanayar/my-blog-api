@@ -20,6 +20,7 @@
         public const string ARTICLE = "Articles";
         public const string TAG = "Tags";
         public const string ARTICLE_UPLOADED_FILE = "ArticleUploadedFiles";
+        public const string FEATURE = "Features";
 
     }
 }
