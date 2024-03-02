@@ -9,9 +9,6 @@ public class CreateCommentCommandValidator : AbstractValidator<CreateCommentComm
         RuleFor(c => c.AuthorName).NotEmpty().WithMessage("Ýsim alaný boþ olamaz.").NotNull().WithMessage("Ýsim alaný boþ olamaz.");
         RuleFor(c => c.AuthorEmail).NotEmpty().WithMessage("E-posta alaný boþ olamaz.").NotNull().WithMessage("E-posta alaný boþ olamaz.");
         RuleFor(c => c.Content).NotEmpty().WithMessage("Yorum alaný boþ olamaz.").NotNull().WithMessage("Yorum alaný boþ olamaz.");
-        RuleFor(c => c.SendNewPosts).NotEmpty().WithMessage("Yeni yazýlar gönderilsin mi?").NotNull().WithMessage("Yeni yazýlar gönderilsin mi?");
-        RuleFor(c => c.SendNewComments).NotEmpty().WithMessage("Yeni yorumlar gönderilsin mi?").NotNull().WithMessage("Yeni yorumlar gönderilsin mi?");
-        RuleFor(c => c.RememberMe).NotEmpty().WithMessage("Beni hatýrla");
         RuleFor(c => c.ArticleId).NotEmpty().WithMessage("Yorum yapýlacak yazý bulunamadý.").NotNull().WithMessage("Yorum yapýlacak yazý bulunamadý.");
     }
 }

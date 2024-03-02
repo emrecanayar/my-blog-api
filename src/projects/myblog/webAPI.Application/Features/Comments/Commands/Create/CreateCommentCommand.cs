@@ -4,6 +4,7 @@ using Core.Application.ResponseTypes.Concrete;
 using Core.Domain.Entities;
 using MediatR;
 using System.Net;
+using System.Text.Json.Serialization;
 
 namespace Application.Features.Comments.Commands.Create;
 
@@ -13,7 +14,8 @@ public class CreateCommentCommand : IRequest<CustomResponseDto<CreatedCommentRes
     public string AuthorEmail { get; set; } = string.Empty;
     public string AuhorWebsite { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;
-    public DateTime DatePosted { get; set; }
+    [JsonIgnore]
+    public DateTime DatePosted { get; set; } = DateTime.Now;
     public bool SendNewPosts { get; set; }
     public bool SendNewComments { get; set; }
     public bool RememberMe { get; set; }
