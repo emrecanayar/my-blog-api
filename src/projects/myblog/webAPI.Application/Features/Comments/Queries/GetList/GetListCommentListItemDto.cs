@@ -1,3 +1,4 @@
+using Application.Features.Users.Queries.GetById;
 using Core.Application.Dtos;
 
 namespace Application.Features.Comments.Queries.GetList;
@@ -15,4 +16,11 @@ public class GetListCommentListItemDto : IDto
     public bool RememberMe { get; set; }
     public Guid ArticleId { get; set; }
     public Guid UserId { get; set; }
+    public GetByIdUserResponse User { get; set; }
+
+
+    public GetListCommentListItemDto()
+    {
+        User = default!;
+    }
 }
