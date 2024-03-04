@@ -20,7 +20,7 @@ public class CreateCommentCommand : IRequest<CustomResponseDto<CreatedCommentRes
     public bool SendNewComments { get; set; }
     public bool RememberMe { get; set; }
     public Guid ArticleId { get; set; }
-    public Guid UserId { get; set; }
+    public Guid? UserId { get; set; }
 
     public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, CustomResponseDto<CreatedCommentResponse>>
     {
