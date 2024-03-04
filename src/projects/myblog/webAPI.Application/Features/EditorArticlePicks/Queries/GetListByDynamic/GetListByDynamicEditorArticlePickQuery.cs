@@ -39,7 +39,7 @@ namespace webAPI.Application.Features.EditorArticlePicks.Queries.GetListByDynami
                     dynamic: request.DynamicQuery,
                     index: request.PageRequest.PageIndex,
                     size: request.PageRequest.PageSize,
-                    include: x => x.Include(x => x.Article).Include(x => x.User),
+                    include: x => x.Include(x => x.Article).ThenInclude(x => x.ArticleUploadedFiles).Include(x => x.Article).ThenInclude(x => x.Category).Include(x => x.User),
                     cancellationToken: cancellationToken);
 
                 EditorArticlePickListModel mappedEditorArticlePickListModel = _mapper.Map<EditorArticlePickListModel>(editorArticlePicks);
