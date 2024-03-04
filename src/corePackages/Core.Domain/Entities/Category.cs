@@ -11,12 +11,14 @@ namespace Core.Domain.Entities
         public UploadedFile UploadedFile { get; set; }
         public ICollection<CategoryUploadedFile> CategoryUploadedFiles { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<HeadArticleFeature> HeadArticleFeatures { get; set; }
 
         public Category()
         {
             UploadedFile = default!;
             CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
             Articles = new HashSet<Article>();
+            HeadArticleFeatures = [];
         }
 
         public Category(Guid id, string name, string description, bool isPopular)
@@ -28,6 +30,7 @@ namespace Core.Domain.Entities
             UploadedFile = default!;
             CategoryUploadedFiles = new HashSet<CategoryUploadedFile>();
             Articles = new HashSet<Article>();
+            HeadArticleFeatures = [];
         }
     }
 }

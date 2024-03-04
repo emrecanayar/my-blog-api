@@ -23,6 +23,8 @@
         public const string FEATURE = "Features";
         public const string COMMENT = "Comments";
         public const string EDITOR_ARTICLE_PICK = "EditorArticlePicks";
+        public const string HEAD_ARTICLE_FEATURE = "HeadArticleFeatures";
+        public const string HEAD_ARTICLE_FEATURE_UPLOADED_FILE = "HeadArticleFeatureUploadedFiles";
 
     }
 }

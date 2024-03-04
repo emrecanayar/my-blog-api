@@ -15,6 +15,7 @@ namespace Core.Domain.Entities
         public ICollection<Category> Categories { get; set; }
         public ICollection<CategoryUploadedFile> CategoryUploadedFiles { get; set; }
         public ICollection<ArticleUploadedFile> ArticleUploadedFiles { get; set; }
+        public ICollection<HeadArticleFeatureUploadedFile> HeadArticleFeatureUploadedFiles { get; set; }
 
         public UploadedFile()
         {
@@ -26,6 +27,7 @@ namespace Core.Domain.Entities
             Categories = [];
             CategoryUploadedFiles = [];
             ArticleUploadedFiles = [];
+            HeadArticleFeatureUploadedFiles = [];
         }
 
         public UploadedFile(Guid id, string token, string fileName, string? directory, string path, string extension, FileType? fileType)
@@ -41,6 +43,7 @@ namespace Core.Domain.Entities
             Categories = [];
             CategoryUploadedFiles = [];
             ArticleUploadedFiles = [];
+            HeadArticleFeatureUploadedFiles = [];
         }
     }
 }
