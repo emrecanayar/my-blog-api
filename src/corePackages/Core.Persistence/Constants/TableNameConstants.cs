@@ -22,6 +22,7 @@
         public const string ARTICLE_UPLOADED_FILE = "ArticleUploadedFiles";
         public const string FEATURE = "Features";
         public const string COMMENT = "Comments";
+        public const string EDITOR_ARTICLE_PICK = "EditorArticlePicks";
 
     }
 }

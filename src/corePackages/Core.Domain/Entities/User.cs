@@ -18,6 +18,7 @@ namespace Core.Domain.Entities
         public virtual ICollection<OtpAuthenticator> OtpAuthenticators { get; set; } = null!;
         public virtual ICollection<Article> Articles { get; set; } = null!;
         public virtual ICollection<Comment> Comments { get; set; } = null!;
+        public virtual ICollection<EditorArticlePick> EditorArticlePicks { get; set; } = null!;
         public User()
         {
             FirstName = string.Empty;
