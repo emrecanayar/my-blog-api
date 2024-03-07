@@ -27,6 +27,7 @@
         public const string HEAD_ARTICLE_FEATURE_UPLOADED_FILE = "HeadArticleFeatureUploadedFiles";
         public const string FOOTER = "Footers";
         public const string SUBSCRIPTION = "Subscriptions";
+        public const string USER_UPLOADED_FILE = "UserUploadedFiles";
 
     }
 }

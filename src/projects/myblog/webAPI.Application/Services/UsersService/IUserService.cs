@@ -1,4 +1,5 @@
-﻿using Core.Domain.Entities;
+﻿using Application.Features.Auth.Commands.Register;
+using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
@@ -29,4 +30,5 @@ public interface IUserService
     Task<User> AddAsync(User user);
     Task<User> UpdateAsync(User user);
     Task<User> DeleteAsync(User user, bool permanent = false);
+    Task<User> AddUserForWithFileAsync(RegisterCommand registerCommand);
 }

@@ -19,14 +19,16 @@ namespace webAPI.Controllers;
 [ApiController]
 public class AuthController : BaseController
 {
-    private readonly WebApiConfiguration _configuration;
+    private readonly WebApiConfiguration _webApiConfiguration;
+    private readonly IConfiguration _configuration;
 
     public AuthController(IConfiguration configuration)
     {
         const string configurationSection = "WebAPIConfiguration";
-        _configuration =
+        _webApiConfiguration =
             configuration.GetSection(configurationSection).Get<WebApiConfiguration>()
             ?? throw new NullReferenceException($"\"{configurationSection}\" section cannot found in configuration.");
+        _configuration = configuration;
     }
 
     /// <summary>
@@ -48,9 +50,10 @@ public class AuthController : BaseController
 
 
     [HttpPost("Register")]
-    public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
+    public async Task<IActionResult> Register([FromBody] RegisterCommand registerCommand)
     {
-        RegisterCommand registerCommand = new() { UserForRegisterDto = userForRegisterDto, IpAddress = getIpAddress() };
+        registerCommand.IpAddress = getIpAddress();
+        registerCommand.WebRootPath = _configuration.GetValue<string>("WebRootPath") ?? throw new ArgumentException("WebRootPath bulunamadı");
         CustomResponseDto<RegisteredResponse> result = await Mediator.Send(registerCommand);
         setRefreshTokenToCookie(result.Data.RefreshToken);
         return Created(uri: "", result.Data.AccessToken);
@@ -77,7 +80,7 @@ public class AuthController : BaseController
     public async Task<IActionResult> EnableEmailAuthenticator()
     {
         EnableEmailAuthenticatorCommand enableEmailAuthenticatorCommand =
-            new() { UserId = getUserIdFromRequest(), VerifyEmailUrlPrefix = $"{_configuration.ApiDomain}/Auth/VerifyEmailAuthenticator" };
+            new() { UserId = getUserIdFromRequest(), VerifyEmailUrlPrefix = $"{_webApiConfiguration.ApiDomain}/Auth/VerifyEmailAuthenticator" };
         await Mediator.Send(enableEmailAuthenticatorCommand);
 
         return Ok();

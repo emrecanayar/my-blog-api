@@ -1,21 +1,31 @@
-﻿using Application.Features.Users.Rules;
+﻿using Application.Features.Auth.Commands.Register;
+using Application.Features.Users.Rules;
 using Application.Services.Repositories;
+using Application.Services.UserUploadedFiles;
+using AutoMapper;
+using Core.Domain.ComplexTypes.Enums;
 using Core.Domain.Entities;
+using Core.Helpers.Helpers;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using webAPI.Application.Features.UploadedFiles.Dtos;
 
 namespace Application.Services.UsersService;
 
 public class UserManager : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
+    private readonly IUserUploadedFilesService _userUploadedFilesService;
     private readonly UserBusinessRules _userBusinessRules;
 
-    public UserManager(IUserRepository userRepository, UserBusinessRules userBusinessRules)
+    public UserManager(IUserRepository userRepository, UserBusinessRules userBusinessRules, IMapper mapper, IUserUploadedFilesService userUploadedFilesService)
     {
         _userRepository = userRepository;
         _userBusinessRules = userBusinessRules;
+        _mapper = mapper;
+        _userUploadedFilesService = userUploadedFilesService;
     }
 
     public async Task<User?> GetAsync(
@@ -77,5 +87,49 @@ public class UserManager : IUserService
         User deletedUser = await _userRepository.DeleteAsync(user);
 
         return deletedUser;
+    }
+
+    public async Task<User> AddUserForWithFileAsync(RegisterCommand registerCommand)
+    {
+        UploadedFileResponseDto uploadedFileResponseDto = await _userBusinessRules.CheckUserForAddAsync(registerCommand);
+
+        HashingHelper.CreatePasswordHash(
+             registerCommand.UserForRegisterDto.Password,
+             passwordHash: out byte[] passwordHash,
+             passwordSalt: out byte[] passwordSalt
+         );
+
+        User newUser = new()
+        {
+            Email = registerCommand.UserForRegisterDto.Email,
+            FirstName = registerCommand.UserForRegisterDto.FirstName,
+            LastName = registerCommand.UserForRegisterDto.LastName,
+            PasswordHash = passwordHash,
+            PasswordSalt = passwordSalt,
+            Status = RecordStatu.Active
+        };
+
+        User createdUser = await _userRepository.AddAsync(newUser);
+        await AddUploadedUserFileInformationAsync(uploadedFileResponseDto, createdUser);
+        return createdUser;
+    }
+
+    private async Task AddUploadedUserFileInformationAsync(UploadedFileResponseDto uploadedFileResponseDto, User user)
+    {
+        string fileName = Path.GetFileName(uploadedFileResponseDto.Path);
+        string newPath = BuildNewPath(fileName);
+
+        await _userUploadedFilesService.AddAsync(new UserUploadedFile
+        {
+            UserId = user.Id,
+            UploadedFileId = uploadedFileResponseDto.Id,
+            OldPath = uploadedFileResponseDto.Path,
+            NewPath = newPath
+        });
+    }
+
+    private string BuildNewPath(string fileName)
+    {
+        return Path.Combine(_userBusinessRules.IMG_FOLDER, fileName).Replace("\\", "/");
     }
 }

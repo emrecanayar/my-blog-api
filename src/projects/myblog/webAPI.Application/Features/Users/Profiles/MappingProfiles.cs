@@ -5,6 +5,7 @@ using Application.Features.Users.Commands.UpdateFromAuth;
 using Application.Features.Users.Queries.GetById;
 using Application.Features.Users.Queries.GetList;
 using AutoMapper;
+using Core.Application.Dtos;
 using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
@@ -22,6 +23,7 @@ public class MappingProfiles : Profile
         CreateMap<User, UpdateUserFromAuthCommand>().ReverseMap();
         CreateMap<User, UpdatedUserFromAuthResponse>().ReverseMap();
         CreateMap<User, DeleteUserCommand>().ReverseMap();
+        CreateMap<User, UserForRegisterDto>().ReverseMap();
         CreateMap<User, DeletedUserResponse>().ReverseMap();
         CreateMap<User, GetByIdUserResponse>().ReverseMap();
         CreateMap<User, GetListUserListItemDto>().ReverseMap();
