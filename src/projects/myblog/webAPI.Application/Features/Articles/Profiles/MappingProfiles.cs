@@ -8,6 +8,7 @@ using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using webAPI.Application.Features.Articles.Queries.GetListByDynamic;
+using webAPI.Application.Features.Articles.Queries.GetListByRating;
 
 namespace Application.Features.Articles.Profiles;
 
@@ -23,7 +24,10 @@ public class MappingProfiles : Profile
         CreateMap<Article, DeletedArticleResponse>().ReverseMap();
         CreateMap<Article, GetByIdArticleResponse>().ReverseMap();
         CreateMap<Article, GetListArticleListItemDto>().ReverseMap();
+        CreateMap<Article, GetListByRatingItemDto>().ReverseMap();
         CreateMap<IPaginate<Article>, GetListResponse<GetListArticleListItemDto>>().ReverseMap();
+        CreateMap<IPaginate<Article>, GetListResponse<GetListByRatingItemDto>>().ReverseMap();
+        CreateMap<IPaginate<Article>, GetListByRatingItemDto>().ReverseMap();
         CreateMap<IPaginate<Article>, ArticleListModel>().ReverseMap();
     }
 }

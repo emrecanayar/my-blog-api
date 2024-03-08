@@ -9,6 +9,7 @@ using Core.Application.ResponseTypes.Concrete;
 using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using webAPI.Application.Features.Articles.Queries.GetListByDynamic;
+using webAPI.Application.Features.Articles.Queries.GetListByRating;
 using webAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
@@ -62,6 +63,14 @@ public class ArticlesController : BaseController
     {
         GetListArticleQuery getListArticleQuery = new() { PageRequest = pageRequest };
         CustomResponseDto<GetListResponse<GetListArticleListItemDto>> response = await Mediator.Send(getListArticleQuery);
+        return Ok(response);
+    }
+
+    [HttpGet("GetListForRating")]
+    public async Task<IActionResult> GetListForRating([FromQuery] PageRequest pageRequest)
+    {
+        GetListByRatingQuery getListByRatingQuery = new() { PageRequest = pageRequest };
+        CustomResponseDto<GetListResponse<GetListByRatingItemDto>> response = await Mediator.Send(getListByRatingQuery);
         return Ok(response);
     }
 
