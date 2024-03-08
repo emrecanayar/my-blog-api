@@ -28,6 +28,7 @@
         public const string FOOTER = "Footers";
         public const string SUBSCRIPTION = "Subscriptions";
         public const string USER_UPLOADED_FILE = "UserUploadedFiles";
+        public const string RATING = "Ratings";
 
     }
 }

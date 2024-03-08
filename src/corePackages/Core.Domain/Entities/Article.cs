@@ -19,6 +19,7 @@ namespace Core.Domain.Entities
         public ICollection<ArticleUploadedFile> ArticleUploadedFiles { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<EditorArticlePick> EditorArticlePicks { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
 
         public Article()
         {
@@ -28,6 +29,7 @@ namespace Core.Domain.Entities
             ArticleUploadedFiles = [];
             Comments = [];
             EditorArticlePicks = [];
+            Ratings = [];
         }
 
         public Article(string title, string content, DateTime date, int viewCount, int commentCount, string seoAuthor, string seoDescription, Guid categoryId, Guid userId)
@@ -47,6 +49,7 @@ namespace Core.Domain.Entities
             ArticleUploadedFiles = [];
             Comments = [];
             EditorArticlePicks = [];
+            Ratings = [];
         }
     }
 }

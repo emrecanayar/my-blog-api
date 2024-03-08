@@ -1,5 +1,6 @@
 using Application.Features.ArticleUploadedFiles.Queries.GetList;
 using Application.Features.Categories.Queries.GetById;
+using Application.Features.Ratings.Queries.GetList;
 using Application.Features.Tags.Queries.GetList;
 using Application.Features.Users.Queries.GetById;
 using Core.Application.Responses;
@@ -16,16 +17,19 @@ public class GetByIdArticleResponse : IResponse
     public int CommentCount { get; set; }
     public string SeoAuthor { get; set; } = string.Empty;
     public string SeoDescription { get; set; } = string.Empty;
+    public double AverageRating { get; set; }
     public GetByIdCategoryResponse Category { get; set; }
     public GetByIdUserResponse User { get; set; }
     public IList<GetListArticleUploadedFileListItemDto> ArticleUploadedFiles { get; set; }
     public IList<GetListTagListItemDto> Tags { get; set; }
+    public IList<GetListRatingListItemDto> Ratings { get; set; }
 
     public GetByIdArticleResponse()
     {
         User = default!;
         Category = default!;
-        ArticleUploadedFiles = new List<GetListArticleUploadedFileListItemDto>();
-        Tags = new List<GetListTagListItemDto>();
+        ArticleUploadedFiles = [];
+        Tags = [];
+        Ratings = [];
     }
 }

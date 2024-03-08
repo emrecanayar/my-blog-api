@@ -30,11 +30,12 @@ public class GetByIdArticleQuery : IRequest<CustomResponseDto<GetByIdArticleResp
         {
             Article? article = await _articleRepository.GetAsync(
                 predicate: a => a.Id == request.Id,
-                include: x => x.Include(x => x.User).Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles),
+                include: x => x.Include(x => x.User).Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles).Include(x => x.Ratings),
                 cancellationToken: cancellationToken);
 
             await _articleBusinessRules.ArticleShouldExistWhenSelected(article);
             GetByIdArticleResponse response = _mapper.Map<GetByIdArticleResponse>(article);
+            await _articleBusinessRules.MappedArticleAverageRatingAsync(response);
             return CustomResponseDto<GetByIdArticleResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
     }

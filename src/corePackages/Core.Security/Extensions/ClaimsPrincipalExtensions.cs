@@ -16,7 +16,7 @@ public static class ClaimsPrincipalExtensions
     public static Guid GetUserId(this ClaimsPrincipal claimsPrincipal)
     {
         string? claimValue = claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault();
-        return claimValue == null ? throw new AuthorizationException("User ID claim not found.") : Guid.Parse(claimValue);
+        return claimValue == null ? throw new AuthorizationException("Kullanıcının yetkisi bulunamadı") : Guid.Parse(claimValue);
     }
 
 }

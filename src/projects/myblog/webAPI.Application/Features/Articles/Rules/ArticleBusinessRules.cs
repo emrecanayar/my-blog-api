@@ -1,5 +1,6 @@
 using Application.Features.Articles.Commands.Create;
 using Application.Features.Articles.Constants;
+using Application.Features.Articles.Queries.GetById;
 using Application.Services.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcerns.Exceptions.Types;
@@ -69,5 +70,21 @@ public class ArticleBusinessRules : BaseBusinessRules
         createArticleCommand.SeoDescription = createArticleCommand.Content.Length > 150 ? createArticleCommand.Content.Substring(0, 150) : createArticleCommand.Content;
 
         return Task.FromResult(createArticleCommand);
+    }
+
+    public double CalculateAverageRating(GetByIdArticleResponse byIdArticleResponse)
+    {
+        if (byIdArticleResponse.Ratings.Count == 0)
+        {
+            return 0;
+        }
+
+        return byIdArticleResponse.Ratings.Average(r => r.Score);
+    }
+
+    public Task MappedArticleAverageRatingAsync(GetByIdArticleResponse byIdArticleResponse)
+    {
+        byIdArticleResponse.AverageRating = CalculateAverageRating(byIdArticleResponse);
+        return Task.CompletedTask;
     }
 }

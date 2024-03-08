@@ -21,6 +21,7 @@ namespace Core.Domain.Entities
         public virtual ICollection<EditorArticlePick> EditorArticlePicks { get; set; } = null!;
         public virtual ICollection<Subscription> Subscriptions { get; set; } = null!;
         public virtual ICollection<UserUploadedFile> UserUploadedFiles { get; set; } = null!;
+        public virtual ICollection<Rating> Ratings { get; set; } = null!;
         public User()
         {
             FirstName = string.Empty;
