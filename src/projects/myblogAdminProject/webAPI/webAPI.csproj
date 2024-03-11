@@ -85,6 +85,7 @@
 	  <None Include="wwwroot\Resources\Files\Category\Screenshot_9.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\solid-1024x341-1.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\sqlserver.webp" />
+	  <None Include="wwwroot\Resources\Files\HeadArticleFeature\solid.webp" />
 	  <None Include="wwwroot\Resources\Images\About\about.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-04-11%281%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-05-14.webp" />
@@ -115,6 +116,7 @@
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\oop.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\paint-palette-600x600.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Screenshot_9.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\solid.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\test.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\unnamed.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\water.webp" />
