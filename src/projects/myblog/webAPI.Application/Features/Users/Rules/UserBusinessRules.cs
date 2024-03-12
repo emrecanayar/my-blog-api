@@ -6,6 +6,7 @@ using Core.CrossCuttingConcerns.Exceptions.Types;
 using Core.Domain.Entities;
 using Core.Security.Hashing;
 using webAPI.Application.Features.UploadedFiles.Dtos;
+using webAPI.Application.Features.Users.Constants;
 using webAPI.Application.Services.UploadedFileService;
 
 namespace Application.Features.Users.Rules;
@@ -55,6 +56,18 @@ public class UserBusinessRules : BaseBusinessRules
         bool doesExists = await _userRepository.AnyAsync(predicate: u => u.Id != id && u.Email == email, enableTracking: false);
         if (doesExists)
             throw new BusinessException(AuthMessages.UserMailAlreadyExists);
+    }
+
+    public Task CheckControlCurrentPassword(string currentPasswordForDb, string currentPasswordForUser)
+    {
+        if (!string.Equals(currentPasswordForDb, currentPasswordForUser)) throw new BusinessException(UserMessages.PasswordDontMatch);
+        return Task.CompletedTask;
+    }
+
+    public Task CheckControlChangePassword(string newPassword, string confirmPassword)
+    {
+        if (!string.Equals(newPassword, confirmPassword)) throw new BusinessException(UserMessages.PasswordDontMatch);
+        return Task.CompletedTask;
     }
 
     public async Task<UploadedFileResponseDto> CheckUserForAddAsync(RegisterCommand registerCommand)

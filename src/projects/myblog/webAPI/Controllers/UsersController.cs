@@ -8,6 +8,7 @@ using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Users.Commands.ChangePassword;
 using webAPI.Application.Features.Users.Commands.UpdateUserInformation;
 using webAPI.Controllers.Base;
 
@@ -65,6 +66,14 @@ public class UsersController : BaseController
     {
         updateUserFromAuthCommand.Id = getUserIdFromRequest();
         CustomResponseDto<UpdatedUserFromAuthResponse> result = await Mediator.Send(updateUserFromAuthCommand);
+        return Ok(result);
+    }
+
+    [HttpPut("ChangePassword")]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand changePasswordCommand)
+    {
+        changePasswordCommand.Id = getUserIdFromRequest();
+        CustomResponseDto<ChangePasswordUserResponse> result = await Mediator.Send(changePasswordCommand);
         return Ok(result);
     }
 

@@ -11,5 +11,5 @@ public static class AuthMessages
     public const string RefreshDontExists = "Yenileme mevcut deðil.";
     public const string InvalidRefreshToken = "Geçersiz yenileme belirteci.";
     public const string UserMailAlreadyExists = "Kullanýcý e-postasý zaten mevcut.";
-    public const string PasswordDontMatch = "Þifre uyuþmuyor.";
+    public const string PasswordDontMatch = "Mevcut þifreniz hatalý.";
 }
