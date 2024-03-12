@@ -9,6 +9,7 @@ using Core.Application.Dtos;
 using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
+using webAPI.Application.Features.Users.Commands.UpdateUserInformation;
 
 namespace Application.Features.Users.Profiles;
 
@@ -22,6 +23,7 @@ public class MappingProfiles : Profile
         CreateMap<User, UpdatedUserResponse>().ReverseMap();
         CreateMap<User, UpdateUserFromAuthCommand>().ReverseMap();
         CreateMap<User, UpdatedUserFromAuthResponse>().ReverseMap();
+        CreateMap<User, UpdateUserInformationCommand>().ReverseMap();
         CreateMap<User, DeleteUserCommand>().ReverseMap();
         CreateMap<User, UserForRegisterDto>().ReverseMap();
         CreateMap<User, DeletedUserResponse>().ReverseMap();

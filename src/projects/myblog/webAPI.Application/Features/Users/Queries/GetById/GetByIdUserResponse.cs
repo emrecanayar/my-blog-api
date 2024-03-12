@@ -11,7 +11,7 @@ public class GetByIdUserResponse : IResponse
     public string LastName { get; set; }
     public string Email { get; set; }
     public RecordStatu Status { get; set; }
-    public CultureType Culture { get; set; }
+    public CultureType CultureType { get; set; }
     public IList<GetListUserUploadedFileListItemDto> UserUploadedFiles { get; set; }
 
     public GetByIdUserResponse()
@@ -29,7 +29,7 @@ public class GetByIdUserResponse : IResponse
         LastName = lastName;
         Email = email;
         Status = status;
-        Culture = culture;
+        CultureType = culture;
         UserUploadedFiles = [];
     }
 }

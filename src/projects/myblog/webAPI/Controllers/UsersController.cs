@@ -8,6 +8,7 @@ using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Users.Commands.UpdateUserInformation;
 using webAPI.Controllers.Base;
 
 namespace webAPI.Controllers;
@@ -50,6 +51,14 @@ public class UsersController : BaseController
         CustomResponseDto<UpdatedUserResponse> result = await Mediator.Send(updateUserCommand);
         return Ok(result);
     }
+
+    [HttpPut("UpdateUserInformation")]
+    public async Task<IActionResult> UpdateUserInformation([FromBody] UpdateUserInformationCommand updateUserInformationCommand)
+    {
+        CustomResponseDto<UpdatedUserResponse> result = await Mediator.Send(updateUserInformationCommand);
+        return Ok(result);
+    }
+
 
     [HttpPut("FromAuth")]
     public async Task<IActionResult> UpdateFromAuth([FromBody] UpdateUserFromAuthCommand updateUserFromAuthCommand)
