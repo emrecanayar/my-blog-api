@@ -44,4 +44,18 @@ namespace Core.Domain.ComplexTypes.Enums
     {
         None = 0
     }
+
+    public enum NotificationType
+    {
+        None = 0,
+        Comment = 1,
+        CommentLike = 2,
+        PostLike = 3,
+        Subscription = 4,
+        Achievement = 5,
+        Mention = 6,
+        PostAnnouncement = 7,
+        DailyTip = 8,
+        DraftReminder = 9
+    }
 }
