@@ -33,7 +33,7 @@ public class NotificationsController : BaseController
         return Ok(response);
     }
 
-    [HttpPut]
+    [HttpPut("MarkAsRead")]
     public async Task<IActionResult> MarkAsRead([FromBody] MarkAsReadNotificationCommand markAsReadNotificationCommand)
     {
         CustomResponseDto<MarkAsReadNotificationResponse> response = await Mediator.Send(markAsReadNotificationCommand);
