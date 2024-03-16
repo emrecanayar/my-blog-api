@@ -20,6 +20,7 @@ namespace Core.Domain.Entities
         public ICollection<Comment> Comments { get; set; }
         public ICollection<EditorArticlePick> EditorArticlePicks { get; set; }
         public ICollection<Rating> Ratings { get; set; }
+        public ICollection<FavoriteArticle> FavoriteArticles { get; set; }
 
         public Article()
         {
@@ -30,6 +31,7 @@ namespace Core.Domain.Entities
             Comments = [];
             EditorArticlePicks = [];
             Ratings = [];
+            FavoriteArticles = [];
         }
 
         public Article(string title, string content, DateTime date, int viewCount, int commentCount, string seoAuthor, string seoDescription, Guid categoryId, Guid userId)
@@ -50,6 +52,7 @@ namespace Core.Domain.Entities
             Comments = [];
             EditorArticlePicks = [];
             Ratings = [];
+            FavoriteArticles = [];
         }
     }
 }
