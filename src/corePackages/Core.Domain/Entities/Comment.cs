@@ -16,11 +16,18 @@ namespace Core.Domain.Entities
         public Article Article { get; set; }
         public Guid? UserId { get; set; }
         public User User { get; set; }
+        public Guid? ParentCommentId { get; set; }
+        public Comment ParentComment { get; set; }
+        public ICollection<Comment> Replies { get; set; }
+        public ICollection<Like> Likes { get; set; }
 
         public Comment()
         {
             Article = default!;
             User = default!;
+            ParentComment = default!;
+            Replies = [];
+            Likes = [];
         }
 
         public Comment(Guid id, string authorName, string authorEmail, string auhorWebsite, string content, DateTime datePosted, bool sendNewPosts, bool sendNewComments, bool rememberMe, Guid articleId, Guid userId)
@@ -38,6 +45,9 @@ namespace Core.Domain.Entities
             Article = default!;
             UserId = userId;
             User = default!;
+            ParentComment = default!;
+            Replies = [];
+            Likes = [];
         }
     }
 }

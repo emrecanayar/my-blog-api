@@ -22,6 +22,7 @@ public class CommentConfiguration : BaseConfiguration<Comment, Guid>
         builder.Property(c => c.UserId).IsRequired(false).HasColumnName("UserId").HasMaxLength(250);
         builder.HasOne(c => c.Article).WithMany(a => a.Comments).HasForeignKey(c => c.ArticleId).IsRequired(true);
         builder.HasOne(c => c.User).WithMany(a => a.Comments).HasForeignKey(c => c.UserId).IsRequired(false);
+        builder.HasOne(c => c.ParentComment).WithMany(c => c.Replies).HasForeignKey(c => c.ParentCommentId).IsRequired(false);
         builder.ToTable(TableNameConstants.COMMENT);
 
     }

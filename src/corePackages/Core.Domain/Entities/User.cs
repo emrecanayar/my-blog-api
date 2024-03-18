@@ -24,6 +24,7 @@ namespace Core.Domain.Entities
         public virtual ICollection<Rating> Ratings { get; set; } = null!;
         public virtual ICollection<Notification> Notifications { get; set; } = null!;
         public virtual ICollection<FavoriteArticle> FavoriteArticles { get; set; } = null!;
+        public virtual ICollection<Like> Likes { get; set; } = null!;
         public User()
         {
             FirstName = string.Empty;

@@ -31,6 +31,7 @@
         public const string RATING = "Ratings";
         public const string NOTIFICATION = "Notifications";
         public const string FAVORITE_ARTICLE = "FavoriteArticles";
+        public const string LIKES = "Likes";
 
     }
 }
