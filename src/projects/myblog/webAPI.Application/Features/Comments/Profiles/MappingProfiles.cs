@@ -25,7 +25,8 @@ public class MappingProfiles : Profile
         CreateMap<Comment, DeleteCommentCommand>().ReverseMap();
         CreateMap<Comment, DeletedCommentResponse>().ReverseMap();
         CreateMap<Comment, GetByIdCommentResponse>().ReverseMap();
-        CreateMap<Comment, GetListCommentListItemDto>().ReverseMap();
+        CreateMap<Comment, GetListCommentListItemDto>()
+                 .ForMember(dest => dest.Replies, opt => opt.Ignore());
         CreateMap<IPaginate<Comment>, GetListResponse<GetListCommentListItemDto>>().ReverseMap();
         CreateMap<IPaginate<Comment>, CommentListModel>().ReverseMap();
     }
