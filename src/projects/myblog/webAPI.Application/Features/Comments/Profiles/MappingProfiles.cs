@@ -7,6 +7,7 @@ using AutoMapper;
 using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
+using webAPI.Application.Features.Comments.Commands.CreateReply;
 using webAPI.Application.Features.Comments.Queries.GetListByDynamic;
 
 namespace Application.Features.Comments.Profiles;
@@ -16,7 +17,9 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         CreateMap<Comment, CreateCommentCommand>().ReverseMap();
+        CreateMap<Comment, CreateReplyCommentCommand>().ReverseMap();
         CreateMap<Comment, CreatedCommentResponse>().ReverseMap();
+        CreateMap<Comment, CreatedReplyCommentResponse>().ReverseMap();
         CreateMap<Comment, UpdateCommentCommand>().ReverseMap();
         CreateMap<Comment, UpdatedCommentResponse>().ReverseMap();
         CreateMap<Comment, DeleteCommentCommand>().ReverseMap();

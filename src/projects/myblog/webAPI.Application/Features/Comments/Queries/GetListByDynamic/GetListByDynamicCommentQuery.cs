@@ -36,10 +36,11 @@ namespace webAPI.Application.Features.Comments.Queries.GetListByDynamic
             public async Task<CustomResponseDto<CommentListModel>> Handle(GetListByDynamicCommentQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<Comment> comments = await _commentRepository.GetListByDynamicAsync(
+                              predicate: x => x.ParentCommentId == null,
                               dynamic: request.DynamicQuery,
                               index: request.PageRequest.PageIndex,
                               size: request.PageRequest.PageSize,
-                              include: x => x.Include(x => x.Article).Include(x => x.User),
+                              include: x => x.Include(x => x.Article).Include(x => x.User).ThenInclude(x => x.UserUploadedFiles).Include(x => x.Replies).ThenInclude(x => x.Article).Include(x => x.User).ThenInclude(x => x.UserUploadedFiles),
                               cancellationToken: cancellationToken);
 
                 CommentListModel mappedCommentListModel = _mapper.Map<CommentListModel>(comments);

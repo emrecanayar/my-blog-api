@@ -17,10 +17,11 @@ public class GetListCommentListItemDto : IDto
     public Guid ArticleId { get; set; }
     public Guid UserId { get; set; }
     public GetByIdUserResponse User { get; set; }
-
+    public List<GetListCommentListItemDto> Replies { get; set; }
 
     public GetListCommentListItemDto()
     {
         User = default!;
+        Replies = [];
     }
 }

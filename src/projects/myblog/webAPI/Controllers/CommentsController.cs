@@ -8,6 +8,7 @@ using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
 using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Comments.Commands.CreateReply;
 using webAPI.Application.Features.Comments.Queries.GetListByDynamic;
 using webAPI.Controllers.Base;
 
@@ -22,6 +23,13 @@ public class CommentsController : BaseController
     {
         CustomResponseDto<CreatedCommentResponse> response = await Mediator.Send(createCommentCommand);
 
+        return Created(uri: "", response);
+    }
+
+    [HttpPost("AddReplyComment")]
+    public async Task<IActionResult> AddReplyComment([FromBody] CreateReplyCommentCommand createReplyCommentCommand)
+    {
+        CustomResponseDto<CreatedReplyCommentResponse> response = await Mediator.Send(createReplyCommentCommand);
         return Created(uri: "", response);
     }
 
