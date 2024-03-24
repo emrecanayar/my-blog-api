@@ -28,6 +28,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Features\Features\Commands\" />
+	  <Folder Include="Features\Reports\Queries\" />
 	</ItemGroup>
 
 </Project>

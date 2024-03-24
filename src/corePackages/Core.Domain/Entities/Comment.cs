@@ -20,6 +20,7 @@ namespace Core.Domain.Entities
         public Comment ParentComment { get; set; }
         public ICollection<Comment> Replies { get; set; }
         public ICollection<Like> Likes { get; set; }
+        public ICollection<Report> Reports { get; set; }
 
         public Comment()
         {
@@ -28,6 +29,7 @@ namespace Core.Domain.Entities
             ParentComment = default!;
             Replies = [];
             Likes = [];
+            Reports = [];
         }
 
         public Comment(Guid id, string authorName, string authorEmail, string auhorWebsite, string content, DateTime datePosted, bool sendNewPosts, bool sendNewComments, bool rememberMe, Guid articleId, Guid userId)
@@ -48,6 +50,7 @@ namespace Core.Domain.Entities
             ParentComment = default!;
             Replies = [];
             Likes = [];
+            Reports = [];
         }
     }
 }
