@@ -1,31 +1,34 @@
-using Application.Features.Likes.Rules;
+using Application.Features.Likes.Constants;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.ResponseTypes.Concrete;
-using System.Net;
 using Core.Domain.Entities;
 using MediatR;
+using System.Net;
+using System.Text.Json.Serialization;
 
 namespace Application.Features.Likes.Commands.Create;
 
-public class CreateLikeCommand : IRequest<CustomResponseDto<CreatedLikeResponse>>
+public class CreateLikeCommand : IRequest<CustomResponseDto<CreatedLikeResponse>>, ISecuredRequest
 {
+    [JsonIgnore]
     public Guid UserId { get; set; }
     public Guid CommentId { get; set; }
     public bool IsLiked { get; set; }
+
+    public string[] Roles => [LikesOperationClaims.Admin, LikesOperationClaims.Create];
 
     public class CreateLikeCommandHandler : IRequestHandler<CreateLikeCommand, CustomResponseDto<CreatedLikeResponse>>
     {
         private readonly IMapper _mapper;
         private readonly ILikeRepository _likeRepository;
-        private readonly LikeBusinessRules _likeBusinessRules;
 
-        public CreateLikeCommandHandler(IMapper mapper, ILikeRepository likeRepository,
-                                         LikeBusinessRules likeBusinessRules)
+
+        public CreateLikeCommandHandler(IMapper mapper, ILikeRepository likeRepository)
         {
             _mapper = mapper;
             _likeRepository = likeRepository;
-            _likeBusinessRules = likeBusinessRules;
         }
 
         public async Task<CustomResponseDto<CreatedLikeResponse>> Handle(CreateLikeCommand request, CancellationToken cancellationToken)
@@ -35,7 +38,7 @@ public class CreateLikeCommand : IRequest<CustomResponseDto<CreatedLikeResponse>
             await _likeRepository.AddAsync(like);
 
             CreatedLikeResponse response = _mapper.Map<CreatedLikeResponse>(like);
-         return CustomResponseDto<CreatedLikeResponse>.Success((int)HttpStatusCode.OK, response, true);
+            return CustomResponseDto<CreatedLikeResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
     }
 }

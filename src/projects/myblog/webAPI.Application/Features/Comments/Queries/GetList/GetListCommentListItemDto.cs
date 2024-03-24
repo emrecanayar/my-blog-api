@@ -1,3 +1,4 @@
+using Application.Features.Likes.Queries.GetList;
 using Application.Features.Users.Queries.GetById;
 using Core.Application.Dtos;
 
@@ -17,11 +18,13 @@ public class GetListCommentListItemDto : IDto
     public Guid ArticleId { get; set; }
     public Guid UserId { get; set; }
     public GetByIdUserResponse User { get; set; }
+    public IList<GetListLikeListItemDto> Likes { get; set; }
     public List<GetListCommentListItemDto> Replies { get; set; }
 
     public GetListCommentListItemDto()
     {
         User = default!;
         Replies = [];
+        Likes = [];
     }
 }

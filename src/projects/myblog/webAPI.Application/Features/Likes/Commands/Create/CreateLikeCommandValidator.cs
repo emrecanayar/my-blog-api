@@ -8,6 +8,5 @@ public class CreateLikeCommandValidator : AbstractValidator<CreateLikeCommand>
     {
         RuleFor(c => c.UserId).NotEmpty();
         RuleFor(c => c.CommentId).NotEmpty();
-        RuleFor(c => c.IsLiked).NotEmpty();
     }
 }

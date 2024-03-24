@@ -1,6 +1,4 @@
 using Application.Features.Likes.Commands.Create;
-using Application.Features.Likes.Commands.Delete;
-using Application.Features.Likes.Commands.Update;
 using Application.Features.Likes.Queries.GetById;
 using Application.Features.Likes.Queries.GetList;
 using AutoMapper;
@@ -16,10 +14,6 @@ public class MappingProfiles : Profile
     {
         CreateMap<Like, CreateLikeCommand>().ReverseMap();
         CreateMap<Like, CreatedLikeResponse>().ReverseMap();
-        CreateMap<Like, UpdateLikeCommand>().ReverseMap();
-        CreateMap<Like, UpdatedLikeResponse>().ReverseMap();
-        CreateMap<Like, DeleteLikeCommand>().ReverseMap();
-        CreateMap<Like, DeletedLikeResponse>().ReverseMap();
         CreateMap<Like, GetByIdLikeResponse>().ReverseMap();
         CreateMap<Like, GetListLikeListItemDto>().ReverseMap();
         CreateMap<IPaginate<Like>, GetListResponse<GetListLikeListItemDto>>().ReverseMap();

@@ -43,7 +43,8 @@ namespace webAPI.Application.Features.Comments.Queries.GetListByDynamic
                                             size: request.PageRequest.PageSize,
                                             include: x => x.Include(x => x.Article)
                                                            .Include(x => x.User).ThenInclude(x => x.UserUploadedFiles)
-                                                           .Include(x => x.Replies),
+                                                           .Include(x => x.Replies)
+                                                           .Include(x => x.Likes),
                                             cancellationToken: cancellationToken);
 
                 var commentDtoList = _mapper.Map<List<GetListCommentListItemDto>>(comments.Items); // Doğru: Items üzerinden dönüşüm
@@ -72,7 +73,8 @@ namespace webAPI.Application.Features.Comments.Queries.GetListByDynamic
             {
                 IPaginate<Comment> replies = await _commentRepository.GetListAsync(
                     predicate: x => x.ParentCommentId == parentId,
-                    include: x => x.Include(x => x.User).ThenInclude(x => x.UserUploadedFiles),
+                    include: x => x.Include(x => x.User).ThenInclude(x => x.UserUploadedFiles)
+                    .Include(x => x.Likes),
                     cancellationToken: cancellationToken);
 
                 List<GetListCommentListItemDto> repliesDto = _mapper.Map<List<GetListCommentListItemDto>>(replies.Items);

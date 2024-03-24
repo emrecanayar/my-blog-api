@@ -1,12 +1,12 @@
 using Application.Features.Likes.Commands.Create;
-using Application.Features.Likes.Commands.Delete;
-using Application.Features.Likes.Commands.Update;
 using Application.Features.Likes.Queries.GetById;
 using Application.Features.Likes.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
 using Core.Application.ResponseTypes.Concrete;
+using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Likes.Queries.GetByCommentIdDislike;
+using webAPI.Application.Features.Likes.Queries.GetByCommentIdLike;
 using webAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
@@ -18,25 +18,9 @@ public class LikesController : BaseController
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] CreateLikeCommand createLikeCommand)
     {
+        createLikeCommand.UserId = getUserIdFromRequest();
         CustomResponseDto<CreatedLikeResponse> response = await Mediator.Send(createLikeCommand);
-
         return Created(uri: "", response);
-    }
-
-    [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateLikeCommand updateLikeCommand)
-    {
-        CustomResponseDto<UpdatedLikeResponse> response = await Mediator.Send(updateLikeCommand);
-
-        return Ok(response);
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
-    {
-        CustomResponseDto<DeletedLikeResponse> response = await Mediator.Send(new DeleteLikeCommand { Id = id });
-
-        return Ok(response);
     }
 
     [HttpGet("{id}")]
@@ -46,11 +30,25 @@ public class LikesController : BaseController
         return Ok(response);
     }
 
+    [HttpGet("GetByCommentIdLike")]
+    public async Task<IActionResult> GetByCommentIdLike([FromQuery] Guid commentId)
+    {
+        CustomResponseDto<GetByCommentIdLikeResponse> response = await Mediator.Send(new GetByCommentIdLikeQuery { CommentId = commentId });
+        return Ok(response);
+    }
+
+    [HttpGet("GetByCommentIdDislike")]
+    public async Task<IActionResult> GetByCommentIdDislike([FromQuery] Guid commentId)
+    {
+        CustomResponseDto<GetByCommentIdDislikeResponse> response = await Mediator.Send(new GetByCommentIdDislikeQuery { CommentId = commentId });
+        return Ok(response);
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
         GetListLikeQuery getListLikeQuery = new() { PageRequest = pageRequest };
-       CustomResponseDto<GetListResponse<GetListLikeListItemDto>> response = await Mediator.Send(getListLikeQuery);
+        CustomResponseDto<GetListResponse<GetListLikeListItemDto>> response = await Mediator.Send(getListLikeQuery);
         return Ok(response);
     }
 }

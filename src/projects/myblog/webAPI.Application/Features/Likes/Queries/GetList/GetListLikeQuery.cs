@@ -1,12 +1,12 @@
 using Application.Services.Repositories;
 using AutoMapper;
-using Core.Domain.Entities;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
-using System.Net;
+using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using MediatR;
+using System.Net;
 
 namespace Application.Features.Likes.Queries.GetList;
 
@@ -29,12 +29,12 @@ public class GetListLikeQuery : IRequest<CustomResponseDto<GetListResponse<GetLi
         {
             IPaginate<Like> likes = await _likeRepository.GetListAsync(
                 index: request.PageRequest.PageIndex,
-                size: request.PageRequest.PageSize, 
+                size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken
             );
 
             GetListResponse<GetListLikeListItemDto> response = _mapper.Map<GetListResponse<GetListLikeListItemDto>>(likes);
-             return CustomResponseDto<GetListResponse<GetListLikeListItemDto>>.Success((int)HttpStatusCode.OK, response, true);
+            return CustomResponseDto<GetListResponse<GetListLikeListItemDto>>.Success((int)HttpStatusCode.OK, response, true);
         }
     }
 }
