@@ -7,6 +7,7 @@ using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.FavoriteArticles.Commands.DeleteByArticleId;
 using webAPI.Application.Features.FavoriteArticles.Queries.GetByArticleId;
 using webAPI.Controllers.Base;
 
@@ -37,6 +38,14 @@ public class FavoriteArticlesController : BaseController
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         CustomResponseDto<DeletedFavoriteArticleResponse> response = await Mediator.Send(new DeleteFavoriteArticleCommand { Id = id });
+
+        return Ok(response);
+    }
+
+    [HttpDelete("DeleteByArticleId/{id}")]
+    public async Task<IActionResult> DeleteByArticleId([FromRoute] Guid id)
+    {
+        CustomResponseDto<DeleteFavoriteArticleByArticleIdResponse> response = await Mediator.Send(new DeleteFavoriteArticleByArticleIdCommand { UserId = getUserIdFromRequest(), ArticleId = id });
 
         return Ok(response);
     }
