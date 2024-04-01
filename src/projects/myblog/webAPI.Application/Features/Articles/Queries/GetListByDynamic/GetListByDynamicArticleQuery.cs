@@ -39,7 +39,9 @@ namespace webAPI.Application.Features.Articles.Queries.GetListByDynamic
                     dynamic: request.DynamicQuery,
                     index: request.PageRequest.PageIndex,
                     size: request.PageRequest.PageSize,
-                    include: x => x.Include(x => x.User).ThenInclude(x => x.UserUploadedFiles).Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles),
+                    include: x => x.Include(x => x.User).ThenInclude(x => x.UserUploadedFiles)
+                                   .Include(x => x.User).ThenInclude(x => x.FavoriteArticles)
+                                   .Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles),
                     cancellationToken: cancellationToken);
 
                 ArticleListModel mappedArticleListModel = _mapper.Map<ArticleListModel>(articles);

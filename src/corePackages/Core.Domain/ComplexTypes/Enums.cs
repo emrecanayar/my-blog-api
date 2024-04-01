@@ -58,4 +58,11 @@ namespace Core.Domain.ComplexTypes.Enums
         DailyTip = 8,
         DraftReminder = 9
     }
+
+    public enum VoteType
+    {
+        None = 0,
+        Upvote = 1,
+        Downvote = -1
+    }
 }

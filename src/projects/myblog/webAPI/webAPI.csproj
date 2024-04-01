@@ -26,8 +26,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="wwwroot\Resources\Files\Article\3e41c594-7329-4f11-b9fd-6900f348a564.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\72d2433f-a9b0-472b-b5c0-01e59a7e7b89.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\763e6074-93c1-42b8-8e74-3bfc3cd001cb.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\7d7e212e-adf1-4f81-8f7a-79074d08450a.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\80f10538-7107-4df5-87fd-6f1a5072c938.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\aaajpg.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\alinazik.webp" />
@@ -42,6 +44,7 @@
 	  <None Include="wwwroot\Resources\Files\Article\images%283%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault%281%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\paint-palette-600x600.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\water.webp" />
@@ -76,6 +79,10 @@
 	  <None Include="wwwroot\Resources\Files\Category\solid-1024x341-1.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\sqlserver.webp" />
 	  <None Include="wwwroot\Resources\Files\HeadArticleFeature\solid.webp" />
+	  <None Include="wwwroot\Resources\Files\User\Artboard_7.webp" />
+	  <None Include="wwwroot\Resources\Files\User\images.webp" />
+	  <None Include="wwwroot\Resources\Files\User\sqlserver.webp" />
+	  <None Include="wwwroot\Resources\Files\User\water.webp" />
 	  <None Include="wwwroot\Resources\Images\About\about.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-04-11%281%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\2018-05-14.webp" />
@@ -89,6 +96,7 @@
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\alinazik.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\arsu-akademi-gorsel-sanatlar.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Artboard_7.webp" />
+	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\Csharp_Logo.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\deadpool-gorsel-big.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download%281%29.webp" />
 	  <None Include="wwwroot\Resources\UploadedFiles\DocumentPool\download%282%29.webp" />

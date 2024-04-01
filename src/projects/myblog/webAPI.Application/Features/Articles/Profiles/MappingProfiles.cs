@@ -26,6 +26,15 @@ public class MappingProfiles : Profile
         CreateMap<Article, GetListArticleListItemDto>().ReverseMap();
         CreateMap<Article, GetListByRatingItemDto>().ReverseMap();
         CreateMap<IPaginate<Article>, GetListResponse<GetListArticleListItemDto>>().ReverseMap();
+        CreateMap<Article, GetListArticleListItemDto>()
+            .AfterMap((src, dest, context) =>
+            {
+                if (src.User != null && src.User.FavoriteArticles != null)
+                {
+                    dest.IsUserFavoriteArticle = src.User.FavoriteArticles.Any(fa => fa.ArticleId == src.Id);
+                }
+                else dest.IsUserFavoriteArticle = false;
+            });
         CreateMap<IPaginate<Article>, GetListResponse<GetListByRatingItemDto>>().ReverseMap();
         CreateMap<IPaginate<Article>, GetListByRatingItemDto>().ReverseMap();
         CreateMap<IPaginate<Article>, ArticleListModel>().ReverseMap();

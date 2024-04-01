@@ -20,6 +20,7 @@ public class GetListArticleListItemDto : IDto
     public GetByIdUserResponse User { get; set; }
     public IList<GetListArticleUploadedFileListItemDto> ArticleUploadedFiles { get; set; }
     public IList<GetListTagListItemDto> Tags { get; set; }
+    public bool IsUserFavoriteArticle { get; set; }
 
     public GetListArticleListItemDto()
     {
