@@ -65,4 +65,15 @@ namespace Core.Domain.ComplexTypes.Enums
         Upvote = 1,
         Downvote = -1
     }
+
+    public enum ArticleReportType
+    {
+        None = 0,
+        NotAbout = 1,
+        BrokenLink = 2,
+        Clickbait = 3,
+        LowQuality = 4,
+        NSFW = 5,
+        Other = 6
+    }
 }

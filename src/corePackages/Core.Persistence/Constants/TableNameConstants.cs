@@ -34,6 +34,7 @@
         public const string LIKES = "Likes";
         public const string REPORT = "Reports";
         public const string ARTICLE_VOTE = "ArticleVotes";
+        public const string ARTICLE_REPORT = "ArticleReports";
 
     }
 }

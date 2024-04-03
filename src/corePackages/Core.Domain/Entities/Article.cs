@@ -22,6 +22,7 @@ namespace Core.Domain.Entities
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<FavoriteArticle> FavoriteArticles { get; set; }
         public ICollection<ArticleVote> ArticleVotes { get; set; }
+        public ICollection<ArticleReport> ArticleReports { get; set; }
 
         public Article()
         {
@@ -34,6 +35,7 @@ namespace Core.Domain.Entities
             Ratings = [];
             FavoriteArticles = [];
             ArticleVotes = [];
+            ArticleReports = [];
         }
 
         public Article(string title, string content, DateTime date, int viewCount, int commentCount, string seoAuthor, string seoDescription, Guid categoryId, Guid userId)
@@ -56,6 +58,7 @@ namespace Core.Domain.Entities
             Ratings = [];
             FavoriteArticles = [];
             ArticleVotes = [];
+            ArticleReports = [];
         }
     }
 }

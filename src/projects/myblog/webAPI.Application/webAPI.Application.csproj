@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Features\ArticleReports\Queries\" />
 	  <Folder Include="Features\Features\Commands\" />
 	  <Folder Include="Features\Reports\Queries\" />
 	</ItemGroup>
