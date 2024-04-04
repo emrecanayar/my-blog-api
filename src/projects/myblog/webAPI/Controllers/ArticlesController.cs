@@ -8,7 +8,9 @@ using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
 using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Application.Features.Articles.Queries.GetByIdForSearch;
 using webAPI.Application.Features.Articles.Queries.GetListByDynamic;
+using webAPI.Application.Features.Articles.Queries.GetListByDynamicForSearch;
 using webAPI.Application.Features.Articles.Queries.GetListByRating;
 using webAPI.Controllers.Base;
 
@@ -58,6 +60,14 @@ public class ArticlesController : BaseController
         return Ok(response);
     }
 
+    [HttpGet("GetByIdForSearch/{id}")]
+    public async Task<IActionResult> GetByIdForSearch([FromRoute] Guid id)
+    {
+        CustomResponseDto<GetByIdForSearchArticleResponse> response = await Mediator.Send(new GetByIdForSearchArticleQuery { Id = id });
+        return Ok(response);
+    }
+
+
     [HttpGet]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
@@ -82,4 +92,14 @@ public class ArticlesController : BaseController
         CustomResponseDto<ArticleListModel> result = await Mediator.Send(getListByDynamicArticleQuery);
         return Ok(result);
     }
+
+    [HttpPost("GetListByDynamicForSearch")]
+    public async Task<IActionResult> GetListByDynamicForSearch([FromQuery] PageRequest pageRequest,
+                                                               [FromBody] DynamicQuery? dynamicQuery = null)
+    {
+        GetListByDynamicForSearchArticleQuery getListByDynamicForSearchArticleQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+        CustomResponseDto<ArticleSearchListModel> result = await Mediator.Send(getListByDynamicForSearchArticleQuery);
+        return Ok(result);
+    }
+
 }
