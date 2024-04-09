@@ -41,7 +41,8 @@ namespace webAPI.Application.Features.Articles.Queries.GetListByDynamic
                     size: request.PageRequest.PageSize,
                     include: x => x.Include(x => x.User).ThenInclude(x => x.UserUploadedFiles)
                                    .Include(x => x.User).ThenInclude(x => x.FavoriteArticles)
-                                   .Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles),
+                                   .Include(x => x.Category).Include(x => x.Tags).Include(x => x.ArticleUploadedFiles)
+                                   .Include(x => x.ArticleVotes),
                     cancellationToken: cancellationToken);
 
                 ArticleListModel mappedArticleListModel = _mapper.Map<ArticleListModel>(articles);

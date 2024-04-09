@@ -1,4 +1,5 @@
 using Application.Features.ArticleUploadedFiles.Queries.GetList;
+using Application.Features.ArticleVotes.Queries.GetList;
 using Application.Features.Categories.Queries.GetById;
 using Application.Features.Tags.Queries.GetList;
 using Application.Features.Users.Queries.GetById;
@@ -20,13 +21,15 @@ public class GetListArticleListItemDto : IDto
     public GetByIdUserResponse User { get; set; }
     public IList<GetListArticleUploadedFileListItemDto> ArticleUploadedFiles { get; set; }
     public IList<GetListTagListItemDto> Tags { get; set; }
+    public IList<GetListArticleVoteListItemDto> ArticleVotes { get; set; }
     public bool IsUserFavoriteArticle { get; set; }
 
     public GetListArticleListItemDto()
     {
         User = default!;
         Category = default!;
-        ArticleUploadedFiles = new List<GetListArticleUploadedFileListItemDto>();
-        Tags = new List<GetListTagListItemDto>();
+        ArticleUploadedFiles = [];
+        Tags = [];
+        ArticleVotes = [];
     }
 }
