@@ -6,9 +6,11 @@ using Application.Features.Notifications.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Application.ResponseTypes.Concrete;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using webAPI.Application.Features.Notifications.Commands.MarkAsRead;
 using webAPI.Application.Features.Notifications.Queries.GetByUserId;
+using webAPI.Application.Features.Notifications.Queries.GetListByDynamic;
 using webAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
@@ -71,5 +73,14 @@ public class NotificationsController : BaseController
         GetListNotificationQuery getListNotificationQuery = new() { PageRequest = pageRequest };
         CustomResponseDto<GetListResponse<GetListNotificationListItemDto>> response = await Mediator.Send(getListNotificationQuery);
         return Ok(response);
+    }
+
+    [HttpPost("GetListByDynamic")]
+    public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest,
+                                                      [FromBody] DynamicQuery dynamicQuery)
+    {
+        GetListByDynamicNotificationQuery getListByDynamicNotificationQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+        CustomResponseDto<NotificationListModel> result = await Mediator.Send(getListByDynamicNotificationQuery);
+        return Ok(result);
     }
 }

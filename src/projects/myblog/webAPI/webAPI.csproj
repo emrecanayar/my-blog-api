@@ -26,14 +26,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="wwwroot\Resources\Files\Article\0779a8e7-56d7-4595-a3df-1758f0a22fff.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\3b62f168-f624-451d-a347-23ee15bbb119.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\3e41c594-7329-4f11-b9fd-6900f348a564.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\421f3879-eb32-4264-b188-7fa199e6b3d8.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\72d2433f-a9b0-472b-b5c0-01e59a7e7b89.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\763e6074-93c1-42b8-8e74-3bfc3cd001cb.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\7d7e212e-adf1-4f81-8f7a-79074d08450a.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\80f10538-7107-4df5-87fd-6f1a5072c938.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\93a7b314-a796-4c2f-8901-784ed8379c84.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\aaajpg.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\alinazik.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\b1017421-e167-48ae-9aa3-fbab8bb46c8e.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c31d15dc-c22e-4e6a-9266-98cbf681c021.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\c9c1254f-d39b-4b74-b3f4-a9521f595cea.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\Csharp_Logo.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c_sharp.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\d2238b40-dee4-46ce-856b-3414582c7392.webp" />
@@ -41,11 +47,18 @@
 	  <None Include="wwwroot\Resources\Files\Article\google-görsel-novasta.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\gorsel-dil-gorsel-kultur.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\gorsel-zeka-testi.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\images%282%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\images%283%29.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\images.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\IMG_20240318_163048-min.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\IMG_20240318_163058-min.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\IMG_20240318_163101-min.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault%281%29.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\maxresdefault.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\paint-palette-600x600.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\screenshot.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\solid.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\water.webp" />
 	  <None Include="wwwroot\Resources\Files\Category\2018-04-11.webp" />

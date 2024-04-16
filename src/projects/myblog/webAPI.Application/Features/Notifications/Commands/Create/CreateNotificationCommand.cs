@@ -5,16 +5,16 @@ using Core.Domain.ComplexTypes.Enums;
 using Core.Domain.Entities;
 using MediatR;
 using System.Net;
-using System.Text.Json.Serialization;
 
 namespace Application.Features.Notifications.Commands.Create;
 
 public class CreateNotificationCommand : IRequest<CustomResponseDto<CreatedNotificationResponse>>
 {
-    [JsonIgnore]
+
     public Guid UserId { get; set; }
     public NotificationType Type { get; set; }
     public string Content { get; set; } = string.Empty;
+    public Guid ArticleId { get; set; }
 
     public class CreateNotificationCommandHandler : IRequestHandler<CreateNotificationCommand, CustomResponseDto<CreatedNotificationResponse>>
     {

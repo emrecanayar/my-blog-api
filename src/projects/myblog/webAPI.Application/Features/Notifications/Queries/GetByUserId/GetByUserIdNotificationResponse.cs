@@ -9,5 +9,6 @@ namespace webAPI.Application.Features.Notifications.Queries.GetByUserId
         public string Type { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
         public bool IsRead { get; set; }
+        public Guid ArticleId { get; set; }
     }
 }

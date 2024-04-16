@@ -8,6 +8,7 @@ using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using webAPI.Application.Features.Notifications.Queries.GetByUserId;
+using webAPI.Application.Features.Notifications.Queries.GetListByDynamic;
 
 namespace Application.Features.Notifications.Profiles;
 
@@ -26,5 +27,6 @@ public class MappingProfiles : Profile
         CreateMap<Notification, GetListNotificationListItemDto>().ReverseMap();
         CreateMap<IPaginate<Notification>, GetListResponse<GetListNotificationListItemDto>>().ReverseMap();
         CreateMap<IPaginate<Notification>, GetListResponse<GetByUserIdNotificationResponse>>().ReverseMap();
+        CreateMap<IPaginate<Notification>, NotificationListModel>().ReverseMap();
     }
 }
