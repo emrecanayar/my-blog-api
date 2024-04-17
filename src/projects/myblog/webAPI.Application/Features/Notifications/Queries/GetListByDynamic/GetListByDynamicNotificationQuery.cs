@@ -6,6 +6,7 @@ using Core.Domain.Entities;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace webAPI.Application.Features.Notifications.Queries.GetListByDynamic
@@ -36,6 +37,7 @@ namespace webAPI.Application.Features.Notifications.Queries.GetListByDynamic
             {
                 IPaginate<Notification> notifications = await _notificationRepository.GetListByDynamicAsync(
                                                         dynamic: request.DynamicQuery,
+                                                        include: x => x.Include(x => x.Comment),
                                                         index: request.PageRequest.PageIndex,
                                                         size: request.PageRequest.PageSize,
                                                         cancellationToken: cancellationToken);

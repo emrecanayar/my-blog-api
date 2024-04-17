@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Application.ResponseTypes.Concrete;
 using Core.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace Application.Features.Notifications.Queries.GetById;
@@ -27,7 +28,7 @@ public class GetByIdNotificationQuery : IRequest<CustomResponseDto<GetByIdNotifi
 
         public async Task<CustomResponseDto<GetByIdNotificationResponse>> Handle(GetByIdNotificationQuery request, CancellationToken cancellationToken)
         {
-            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id, cancellationToken: cancellationToken);
+            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id, include: x => x.Include(x => x.Article).Include(x => x.User).Include(x => x.Comment), cancellationToken: cancellationToken);
             await _notificationBusinessRules.NotificationShouldExistWhenSelected(notification);
 
             GetByIdNotificationResponse response = _mapper.Map<GetByIdNotificationResponse>(notification);

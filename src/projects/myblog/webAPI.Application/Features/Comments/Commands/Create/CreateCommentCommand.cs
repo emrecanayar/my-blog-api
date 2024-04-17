@@ -26,6 +26,7 @@ public class CreateCommentCommand : IRequest<CustomResponseDto<CreatedCommentRes
     public Guid ArticleId { get; set; }
     public Guid? UserId { get; set; }
     public Guid UserIdForArticle { get; set; }
+    public string ArticleTitleForComment { get; set; } = string.Empty;
 
     public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, CustomResponseDto<CreatedCommentResponse>>
     {
@@ -49,7 +50,7 @@ public class CreateCommentCommand : IRequest<CustomResponseDto<CreatedCommentRes
             Comment comment = _mapper.Map<Comment>(request);
             Comment addedComment = await _commentRepository.AddAsync(comment);
             await _commentBusinessRules.CommentShouldExistWhenSelected(addedComment);
-            await _notificationsService.CreateNotificationAsync(new CreateNotificationCommand { Content = "Yazýnýza yeni bir yorum yapýldý.", Type = NotificationType.Comment, UserId = request.UserIdForArticle, ArticleId = request.ArticleId });
+            await _notificationsService.CreateNotificationAsync(new CreateNotificationCommand { Content = $"{request.AuthorName} kiþisi {request.ArticleTitleForComment} yazýnýza yorum yaptý.", Type = NotificationType.Comment, UserId = request.UserIdForArticle, ArticleId = request.ArticleId, CommentId = addedComment.Id });
             CreatedCommentResponse response = _mapper.Map<CreatedCommentResponse>(addedComment);
             return CustomResponseDto<CreatedCommentResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
