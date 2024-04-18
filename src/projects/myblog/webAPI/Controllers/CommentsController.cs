@@ -9,6 +9,7 @@ using Core.Application.ResponseTypes.Concrete;
 using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using webAPI.Application.Features.Comments.Commands.CreateReply;
+using webAPI.Application.Features.Comments.Commands.Edit;
 using webAPI.Application.Features.Comments.Queries.GetListByDynamic;
 using webAPI.Controllers.Base;
 
@@ -72,5 +73,13 @@ public class CommentsController : BaseController
         GetListByDynamicCommentQuery getListByDynamicCommentQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
         CustomResponseDto<CommentListModel> result = await Mediator.Send(getListByDynamicCommentQuery);
         return Ok(result);
+    }
+
+    [HttpPut("EditComment")]
+    public async Task<IActionResult> EditComment([FromBody] EditCommentCommand editCommentCommand)
+    {
+        CustomResponseDto<EditCommentResponse> response = await Mediator.Send(editCommentCommand);
+
+        return Ok(response);
     }
 }

@@ -8,6 +8,7 @@ using Core.Application.Responses;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using webAPI.Application.Features.Comments.Commands.CreateReply;
+using webAPI.Application.Features.Comments.Commands.Edit;
 using webAPI.Application.Features.Comments.Queries.GetListByDynamic;
 
 namespace Application.Features.Comments.Profiles;
@@ -25,6 +26,8 @@ public class MappingProfiles : Profile
         CreateMap<Comment, DeleteCommentCommand>().ReverseMap();
         CreateMap<Comment, DeletedCommentResponse>().ReverseMap();
         CreateMap<Comment, GetByIdCommentResponse>().ReverseMap();
+        CreateMap<Comment, EditCommentCommand>().ReverseMap();
+        CreateMap<Comment, EditCommentResponse>().ReverseMap();
         CreateMap<Comment, GetListCommentListItemDto>()
                  .ForMember(dest => dest.Replies, opt => opt.Ignore());
         CreateMap<IPaginate<Comment>, GetListResponse<GetListCommentListItemDto>>().ReverseMap();

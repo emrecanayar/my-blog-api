@@ -28,11 +28,11 @@ public class GetByIdNotificationQuery : IRequest<CustomResponseDto<GetByIdNotifi
 
         public async Task<CustomResponseDto<GetByIdNotificationResponse>> Handle(GetByIdNotificationQuery request, CancellationToken cancellationToken)
         {
-            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id, include: x => x.Include(x => x.Article).Include(x => x.User).Include(x => x.Comment), cancellationToken: cancellationToken);
+            Notification? notification = await _notificationRepository.GetAsync(predicate: n => n.Id == request.Id,
+                                                                                include: x => x.Include(x => x.Article).Include(x => x.User).Include(x => x.Comment), cancellationToken: cancellationToken);
             await _notificationBusinessRules.NotificationShouldExistWhenSelected(notification);
 
             GetByIdNotificationResponse response = _mapper.Map<GetByIdNotificationResponse>(notification);
-
             return CustomResponseDto<GetByIdNotificationResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
     }

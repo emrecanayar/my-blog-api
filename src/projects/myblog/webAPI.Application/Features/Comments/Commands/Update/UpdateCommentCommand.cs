@@ -2,19 +2,19 @@ using Application.Features.Comments.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.ResponseTypes.Concrete;
-using System.Net;
 using Core.Domain.Entities;
 using MediatR;
+using System.Net;
 
 namespace Application.Features.Comments.Commands.Update;
 
 public class UpdateCommentCommand : IRequest<CustomResponseDto<UpdatedCommentResponse>>
 {
     public Guid Id { get; set; }
-    public string AuthorName { get; set; }
-    public string AuthorEmail { get; set; }
-    public string AuhorWebsite { get; set; }
-    public string Content { get; set; }
+    public string AuthorName { get; set; } = string.Empty;
+    public string AuthorEmail { get; set; } = string.Empty;
+    public string AuhorWebsite { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
     public DateTime DatePosted { get; set; }
     public bool SendNewPosts { get; set; }
     public bool SendNewComments { get; set; }
@@ -46,7 +46,7 @@ public class UpdateCommentCommand : IRequest<CustomResponseDto<UpdatedCommentRes
 
             UpdatedCommentResponse response = _mapper.Map<UpdatedCommentResponse>(comment);
 
-          return CustomResponseDto<UpdatedCommentResponse>.Success((int)HttpStatusCode.OK, response, true);
+            return CustomResponseDto<UpdatedCommentResponse>.Success((int)HttpStatusCode.OK, response, true);
         }
     }
 }

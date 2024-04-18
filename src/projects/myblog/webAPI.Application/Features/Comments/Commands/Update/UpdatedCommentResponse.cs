@@ -5,10 +5,10 @@ namespace Application.Features.Comments.Commands.Update;
 public class UpdatedCommentResponse : IResponse
 {
     public Guid Id { get; set; }
-    public string AuthorName { get; set; }
-    public string AuthorEmail { get; set; }
-    public string AuhorWebsite { get; set; }
-    public string Content { get; set; }
+    public string AuthorName { get; set; } = string.Empty;
+    public string AuthorEmail { get; set; } = string.Empty;
+    public string AuhorWebsite { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
     public DateTime DatePosted { get; set; }
     public bool SendNewPosts { get; set; }
     public bool SendNewComments { get; set; }
