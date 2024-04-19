@@ -14,7 +14,7 @@ public class CreateNotificationCommand : IRequest<CustomResponseDto<CreatedNotif
     public Guid UserId { get; set; }
     public NotificationType Type { get; set; }
     public string Content { get; set; } = string.Empty;
-    public Guid ArticleId { get; set; }
+    public Guid? ArticleId { get; set; }
     public Guid? CommentId { get; set; }
 
     public class CreateNotificationCommandHandler : IRequestHandler<CreateNotificationCommand, CustomResponseDto<CreatedNotificationResponse>>

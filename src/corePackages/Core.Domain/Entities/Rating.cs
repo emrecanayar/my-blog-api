@@ -9,11 +9,13 @@ namespace Core.Domain.Entities
         public User User { get; set; }
         public Guid ArticleId { get; set; }
         public Article Article { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
 
         public Rating()
         {
             User = default!;
             Article = default!;
+            Notifications = [];
         }
 
         public Rating(Guid id, int score, Guid userId, Guid articleId)
@@ -24,7 +26,7 @@ namespace Core.Domain.Entities
             ArticleId = articleId;
             User = default!;
             Article = default!;
-
+            Notifications = [];
         }
     }
 }
