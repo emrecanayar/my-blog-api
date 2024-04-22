@@ -9,6 +9,7 @@ namespace Core.Domain.Entities
         public Guid? CommentId { get; set; }
         public Guid? RatingId { get; set; }
         public Guid? LikeId { get; set; }
+        public Guid? SubscriptionId { get; set; }
         public string Type { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
         public bool IsRead { get; set; }
@@ -17,6 +18,7 @@ namespace Core.Domain.Entities
         public Comment Comment { get; set; }
         public Rating Rating { get; set; }
         public Like Like { get; set; }
+        public Subscription Subscription { get; set; }
 
         public Notification()
         {
@@ -25,6 +27,7 @@ namespace Core.Domain.Entities
             Comment = default!;
             Rating = default!;
             Like = default!;
+            Subscription = default!;
         }
 
         public Notification(Guid userId, string type, string content, bool isRead)
@@ -38,6 +41,7 @@ namespace Core.Domain.Entities
             Comment = default!;
             Rating = default!;
             Like = default!;
+            Subscription = default!;
         }
     }
 }

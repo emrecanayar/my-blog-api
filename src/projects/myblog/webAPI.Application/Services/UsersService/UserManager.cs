@@ -1,4 +1,6 @@
 ﻿using Application.Features.Auth.Commands.Register;
+using Application.Features.OperationClaims.Rules;
+using Application.Features.Users.Queries.GetList;
 using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using Application.Services.UserUploadedFiles;
@@ -7,6 +9,8 @@ using Core.Domain.ComplexTypes.Enums;
 using Core.Domain.Entities;
 using Core.Helpers.Helpers;
 using Core.Persistence.Paging;
+using Core.Security.Constants;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 using webAPI.Application.Features.UploadedFiles.Dtos;
@@ -18,14 +22,20 @@ public class UserManager : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     private readonly IUserUploadedFilesService _userUploadedFilesService;
+    private readonly IUserOperationClaimRepository _userOperationClaimRepository;
+    private readonly IOperationClaimRepository _operationClaimRepository;
     private readonly UserBusinessRules _userBusinessRules;
+    private readonly OperationClaimBusinessRules _operationClaimBusinessRules;
 
-    public UserManager(IUserRepository userRepository, UserBusinessRules userBusinessRules, IMapper mapper, IUserUploadedFilesService userUploadedFilesService)
+    public UserManager(IUserRepository userRepository, UserBusinessRules userBusinessRules, IMapper mapper, IUserUploadedFilesService userUploadedFilesService, IUserOperationClaimRepository userOperationClaimRepository, IOperationClaimRepository operationClaimRepository, OperationClaimBusinessRules operationClaimBusinessRules)
     {
         _userRepository = userRepository;
         _userBusinessRules = userBusinessRules;
         _mapper = mapper;
         _userUploadedFilesService = userUploadedFilesService;
+        _userOperationClaimRepository = userOperationClaimRepository;
+        _operationClaimRepository = operationClaimRepository;
+        _operationClaimBusinessRules = operationClaimBusinessRules;
     }
 
     public async Task<User?> GetAsync(
@@ -131,5 +141,14 @@ public class UserManager : IUserService
     private string BuildNewPath(string fileName)
     {
         return Path.Combine(_userBusinessRules.IMG_FOLDER, fileName).Replace("\\", "/");
+    }
+
+    public async Task<IList<GetListUserListItemDto>> GetAdminUsersAsync()
+    {
+        OperationClaim? adminOperationClaim = await _operationClaimRepository.GetAsync(x => x.Name == GeneralOperationClaims.Admin);
+        await _operationClaimBusinessRules.OperationClaimShouldExistWhenSelected(adminOperationClaim);
+        IPaginate<UserOperationClaim> userOperationClaims = await _userOperationClaimRepository.GetListAsync(predicate: x => x.OperationClaimId == adminOperationClaim.Id, include: x => x.Include(x => x.User));
+        IList<GetListUserListItemDto> adminUsers = userOperationClaims.Items.Select(x => _mapper.Map<GetListUserListItemDto>(x.User)).ToList();
+        return adminUsers;
     }
 }

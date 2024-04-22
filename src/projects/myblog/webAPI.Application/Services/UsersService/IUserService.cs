@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auth.Commands.Register;
+using Application.Features.Users.Queries.GetList;
 using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
@@ -31,4 +32,5 @@ public interface IUserService
     Task<User> UpdateAsync(User user);
     Task<User> DeleteAsync(User user, bool permanent = false);
     Task<User> AddUserForWithFileAsync(RegisterCommand registerCommand);
+    Task<IList<GetListUserListItemDto>> GetAdminUsersAsync();
 }

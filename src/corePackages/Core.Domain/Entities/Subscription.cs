@@ -9,10 +9,12 @@ namespace Core.Domain.Entities
         public string Email { get; set; } = string.Empty;
         public Guid? UserId { get; set; }
         public User User { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
 
         public Subscription()
         {
             User = default!;
+            Notifications = [];
         }
 
         public Subscription(Guid id, string firstName, string lastName, string email, Guid? userId)
@@ -23,6 +25,7 @@ namespace Core.Domain.Entities
             Email = email;
             UserId = userId;
             User = default!;
+            Notifications = [];
         }
     }
 }

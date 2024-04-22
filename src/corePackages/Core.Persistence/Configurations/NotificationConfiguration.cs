@@ -15,6 +15,7 @@ public class NotificationConfiguration : BaseConfiguration<Notification, Guid>
         builder.Property(n => n.CommentId).IsRequired(false).HasColumnName("CommentId");
         builder.Property(n => n.RatingId).IsRequired(false).HasColumnName("RatingId");
         builder.Property(n => n.LikeId).IsRequired(false).HasColumnName("LikeId");
+        builder.Property(n => n.SubscriptionId).IsRequired(false).HasColumnName("SubscriptionId");
         builder.Property(n => n.Type).IsRequired(true).HasColumnName("Type").HasMaxLength(250);
         builder.Property(n => n.Content).IsRequired(true).HasColumnName("Content").HasMaxLength(250);
         builder.Property(n => n.IsRead).IsRequired(true).HasColumnName("IsRead").HasMaxLength(250);
@@ -23,6 +24,7 @@ public class NotificationConfiguration : BaseConfiguration<Notification, Guid>
         builder.HasOne(x => x.Comment).WithMany(x => x.Notifications).HasForeignKey(x => x.CommentId);
         builder.HasOne(x => x.Rating).WithMany(x => x.Notifications).HasForeignKey(x => x.RatingId);
         builder.HasOne(x => x.Like).WithMany(x => x.Notifications).HasForeignKey(x => x.LikeId);
+        builder.HasOne(x => x.Subscription).WithMany(x => x.Notifications).HasForeignKey(x => x.SubscriptionId);
         builder.ToTable(TableNameConstants.NOTIFICATION);
     }
 }
