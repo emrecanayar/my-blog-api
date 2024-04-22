@@ -92,4 +92,7 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
     Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
 
     Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entity, bool permanent = false);
+    Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate);
+
+
 }

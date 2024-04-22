@@ -6,6 +6,7 @@ using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using webAPI.Application.Features.Notifications.Queries.GetNotificationCountByUserId;
 
 namespace Application.Services.Notifications;
 
@@ -99,5 +100,11 @@ public class NotificationsManager : INotificationsService
         notification.IsRead = true;
         Notification readedNotification = await _notificationRepository.UpdateAsync(notification);
         return readedNotification;
+    }
+
+    public async Task<GetNotificationCountDto> GetNotificationCountByUserId(Guid userId)
+    {
+        int notificationsCount = await _notificationRepository.CountAsync(x => x.UserId == userId && !x.IsRead);
+        return new GetNotificationCountDto { TotalCount = notificationsCount };
     }
 }

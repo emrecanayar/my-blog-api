@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using webAPI.Application.Features.Notifications.Commands.MarkAsRead;
 using webAPI.Application.Features.Notifications.Queries.GetByUserId;
 using webAPI.Application.Features.Notifications.Queries.GetListByDynamic;
+using webAPI.Application.Features.Notifications.Queries.GetNotificationCountByUserId;
 using webAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
@@ -64,6 +65,14 @@ public class NotificationsController : BaseController
     {
         Guid userId = getUserIdFromRequest();
         CustomResponseDto<GetListResponse<GetByUserIdNotificationResponse>> response = await Mediator.Send(new GetByUserIdNotificationQuery { UserId = userId });
+        return Ok(response);
+    }
+
+    [HttpGet("GetByUserIdCount")]
+    public async Task<IActionResult> GetByUserIdCount()
+    {
+        Guid userId = getUserIdFromRequest();
+        CustomResponseDto<GetNotificationCountDto> response = await Mediator.Send(new GetNotificationCountByUserIdQuery { UserId = userId });
         return Ok(response);
     }
 

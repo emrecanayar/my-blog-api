@@ -394,6 +394,11 @@ public class EfRepositoryBase<TEntity, TEntityId, TContext> : IAsyncRepository<T
         return queryable.Any();
     }
 
+    public async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await (predicate == null ? Query().CountAsync() : Query().CountAsync(predicate));
+    }
+
     protected async Task SetEntityAsDeletedAsync(TEntity entity, bool permanent)
     {
         if (!permanent)
@@ -564,5 +569,6 @@ public class EfRepositoryBase<TEntity, TEntityId, TContext> : IAsyncRepository<T
 
         Context.Update(entity);
     }
+
 
 }

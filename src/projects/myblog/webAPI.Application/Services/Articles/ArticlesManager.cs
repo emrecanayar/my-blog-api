@@ -97,6 +97,7 @@ public class ArticlesManager : IArticlesService
         return addedArticle;
     }
 
+
     private async Task AddUploadedFileInformationAsync(UploadedFileResponseDto uploadedFileResponse, Article article)
     {
         string fileName = Path.GetFileName(uploadedFileResponse.Path);
@@ -122,5 +123,6 @@ public class ArticlesManager : IArticlesService
     {
         return Path.Combine(_articleBusinessRules.IMG_FOLDER, fileName).Replace("\\", "/");
     }
+
 
 }

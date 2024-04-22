@@ -3,6 +3,7 @@ using Core.Domain.Entities;
 using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using webAPI.Application.Features.Notifications.Queries.GetNotificationCountByUserId;
 
 namespace Application.Services.Notifications;
 
@@ -31,4 +32,5 @@ public interface INotificationsService
     Task<Notification> CreateNotificationAsync(CreateNotificationCommand createNotificationCommand);
     Task<IPaginate<Notification>> GetNotificationsAsync(Guid userId);
     Task<Notification> MarkAsReadAsync(Guid notificationId);
+    Task<GetNotificationCountDto> GetNotificationCountByUserId(Guid userId);
 }
