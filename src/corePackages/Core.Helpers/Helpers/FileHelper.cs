@@ -213,6 +213,7 @@ namespace Core.Helpers.Helpers
                 type.ToLower() != ".png" &&
                 type.ToLower() != ".jpg" &&
                 type.ToLower() != ".svg" &&
+                type.ToLower() != ".webp" &&
                 type.ToLower() != ".mp4";
         }
 

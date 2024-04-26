@@ -44,6 +44,7 @@ public class ArticleBusinessRules : BaseBusinessRules
         {
             UploadedFileResponseDto? uploadedFile = await _uploadedFileService.TransferFile(createArticleCommand.Tokens[0], IMG_FOLDER, createArticleCommand.WebRootPath);
 
+
             if (uploadedFile is not null) return uploadedFile;
 
             throw new BusinessException("Makale için yüklenen dosya bulunamadý.");

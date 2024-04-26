@@ -30,6 +30,7 @@
 	  <None Include="wwwroot\Resources\Files\Article\3b62f168-f624-451d-a347-23ee15bbb119.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\3e41c594-7329-4f11-b9fd-6900f348a564.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\421f3879-eb32-4264-b188-7fa199e6b3d8.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\70a5b57b-b6e9-46ec-b73f-b59d756f09d6.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\72d2433f-a9b0-472b-b5c0-01e59a7e7b89.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\763e6074-93c1-42b8-8e74-3bfc3cd001cb.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\7d7e212e-adf1-4f81-8f7a-79074d08450a.webp" />
@@ -40,10 +41,12 @@
 	  <None Include="wwwroot\Resources\Files\Article\b1017421-e167-48ae-9aa3-fbab8bb46c8e.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c31d15dc-c22e-4e6a-9266-98cbf681c021.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c9c1254f-d39b-4b74-b3f4-a9521f595cea.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\cdd23d81-4f75-47c6-b423-5e79e7790029.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\Csharp_Logo.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\c_sharp.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\d2238b40-dee4-46ce-856b-3414582c7392.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\d9d9161b-830a-4777-a0a1-798d8f970d99.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\download.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\google-görsel-novasta.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\gorsel-dil-gorsel-kultur.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\gorsel-zeka-testi.webp" />
@@ -58,6 +61,7 @@
 	  <None Include="wwwroot\Resources\Files\Article\paint-palette-600x600.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\react.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\screenshot.webp" />
+	  <None Include="wwwroot\Resources\Files\Article\Screenshot2024-02-26125552.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\solid.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\test1.webp" />
 	  <None Include="wwwroot\Resources\Files\Article\water.webp" />
@@ -93,7 +97,10 @@
 	  <None Include="wwwroot\Resources\Files\Category\sqlserver.webp" />
 	  <None Include="wwwroot\Resources\Files\HeadArticleFeature\solid.webp" />
 	  <None Include="wwwroot\Resources\Files\User\Artboard_7.webp" />
+	  <None Include="wwwroot\Resources\Files\User\b6ae0797-ad23-4ad6-b264-2d836bb55ce8.webp" />
 	  <None Include="wwwroot\Resources\Files\User\images.webp" />
+	  <None Include="wwwroot\Resources\Files\User\Screenshot2024-02-09224431.webp" />
+	  <None Include="wwwroot\Resources\Files\User\Screenshot2024-02-26125552.webp" />
 	  <None Include="wwwroot\Resources\Files\User\sqlserver.webp" />
 	  <None Include="wwwroot\Resources\Files\User\water.webp" />
 	  <None Include="wwwroot\Resources\Images\About\about.webp" />
