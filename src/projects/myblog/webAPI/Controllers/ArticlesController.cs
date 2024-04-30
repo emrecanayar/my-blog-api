@@ -31,8 +31,8 @@ public class ArticlesController : BaseController
     public async Task<IActionResult> Add([FromBody] CreateArticleCommand createArticleCommand)
     {
         createArticleCommand.WebRootPath = _configuration.GetValue<string>("WebRootPath") ?? throw new ArgumentException("WebRootPath bulunamadý");
-        createArticleCommand.UserId = Guid.Parse("19AFB672-BF92-47B0-AC84-2997C4320245"); //getUserIdFromRequest() 
-        createArticleCommand.SeoAuthor = "Admin Admin";//getUserFromRequest().FirstName + " " + getUserFromRequest().LastName;
+        createArticleCommand.UserId = getUserIdFromRequest();
+        createArticleCommand.SeoAuthor = getUserFromRequest().FirstName + " " + getUserFromRequest().LastName;
         CustomResponseDto<CreatedArticleResponse> response = await Mediator.Send(createArticleCommand);
         return Created(uri: "", response);
     }
