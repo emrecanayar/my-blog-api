@@ -166,6 +166,21 @@ namespace Core.Helpers.Helpers
                 Extension = FileInfoHelper.GetFileExtension($"{folderPath.Replace(" ", string.Empty)}/{name}{type}".Replace("\\", "/")),
             };
         }
+
+        public static GenerateUrl AzureGenerateURLForFile(IFormFile file, string folderPath)
+        {
+            var name = file.FileName.Split('.')[0].Replace(" ", string.Empty);
+            var type = file.ContentType.ToLower().Contains("image") ? ".webp" : Path.GetExtension(file.FileName);
+            CheckDirectoryExists(Path.Combine(folderPath.Replace("/", "\\")));
+
+            return new GenerateUrl
+            {
+                FileType = type,
+                FileName = name,
+                Path = $"{folderPath.Replace(" ", string.Empty)}/{name}{type}".Replace("\\", "/"),
+                Extension = FileInfoHelper.GetFileExtension($"{folderPath.Replace(" ", string.Empty)}/{name}{type}".Replace("\\", "/")),
+            };
+        }
         public static string Upload(IFormFile file, string webRootPath, string filePath)
         {
             var isNotValid = CheckFileTypeValid(Path.GetExtension(file.FileName));
@@ -187,6 +202,15 @@ namespace Core.Helpers.Helpers
             var path = Path.Combine(webRootPath, newFolder.Replace("/", "\\"), fileName);
             return path;
         }
+
+
+        public static string AzureGetNewPath(string newFolder, string fileName)
+        {
+            CheckDirectoryExists(Path.Combine(newFolder.Replace("/", "\\")));
+            string path = Path.Combine(newFolder.Replace("/", "\\"), fileName);
+            return path;
+        }
+
 
         public static string GetURLForFileFromFullPath(string webRootPath, string fullPath)
         {

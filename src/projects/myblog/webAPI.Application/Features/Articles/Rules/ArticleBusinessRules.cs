@@ -14,7 +14,7 @@ public class ArticleBusinessRules : BaseBusinessRules
 {
     private readonly IArticleRepository _articleRepository;
     private readonly IUploadedFileService _uploadedFileService;
-    public readonly string IMG_FOLDER = Path.Combine("Resources", "Files", typeof(Article).Name);
+    public readonly string IMG_FOLDER = Path.Combine("Resources", "UploadedFiles", typeof(Article).Name);
 
     public ArticleBusinessRules(IArticleRepository articleRepository, IUploadedFileService uploadedFileService)
     {
@@ -42,8 +42,7 @@ public class ArticleBusinessRules : BaseBusinessRules
     {
         if (createArticleCommand.Tokens?.Count > 0)
         {
-            UploadedFileResponseDto? uploadedFile = await _uploadedFileService.TransferFile(createArticleCommand.Tokens[0], IMG_FOLDER, createArticleCommand.WebRootPath);
-
+            UploadedFileResponseDto? uploadedFile = await _uploadedFileService.AzureTransferFileAsync(createArticleCommand.Tokens[0], IMG_FOLDER);
 
             if (uploadedFile is not null) return uploadedFile;
 

@@ -1,6 +1,11 @@
-﻿using Core.Domain.Entities;
+﻿using Azure.Security.KeyVault.Secrets;
+using Core.Domain.Entities;
 using Core.Helpers.Helpers;
+using Core.Helpers.Services;
+using Core.Helpers.Services.ConfigurationServices;
+using Core.Helpers.Services.ConfigurationServices.Dtos;
 using Core.Security.Constants;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using webAPI.Application.Features.UploadedFiles.Dtos;
 using webAPI.Application.Features.UploadedFiles.Rules;
@@ -11,12 +16,16 @@ namespace webAPI.Application.Services.UploadedFileService
     public class UploadedFileManager : IUploadedFileService
     {
         private readonly IUploadedFileRepository _uploadedFileRepository;
+        private readonly IConfiguration _configuration;
+        private readonly IConfigurationService _configurationService;
         private readonly UploadedFileBusinessRules _uploadedFileBusinessRules;
 
-        public UploadedFileManager(IUploadedFileRepository uploadedFileRepository, UploadedFileBusinessRules uploadedFileBusinessRules)
+        public UploadedFileManager(IUploadedFileRepository uploadedFileRepository, UploadedFileBusinessRules uploadedFileBusinessRules, IConfiguration configuration, IConfigurationService configurationService)
         {
             _uploadedFileRepository = uploadedFileRepository;
             _uploadedFileBusinessRules = uploadedFileBusinessRules;
+            _configuration = configuration;
+            _configurationService = configurationService;
         }
 
         public async Task<UploadedFile> AddOrUpdateDocument(UploadedFileDto uploadedFileDto)
@@ -60,6 +69,17 @@ namespace webAPI.Application.Services.UploadedFileService
             return new UploadedFileResponseDto { Id = uploadedFile.Id, Path = uploadedFileDto.Path };
         }
 
+        public async Task<UploadedFileResponseDto?> AzureTransferFileAsync(string token, string newFolderPath)
+        {
+            UploadedFile? uploadedFile = await this._uploadedFileRepository.GetAsync(x => x.Token == token);
+            if (uploadedFile == null) return null;
+            string decryptedProjectFileData = HashingHelper.AESDecrypt(uploadedFile.Token, SecurityKeyConstant.DOCUMENT_SECURITY_KEY);
+            UploadedFileDto? uploadedFileDto = JsonSerializer.Deserialize<UploadedFileDto>(decryptedProjectFileData);
+            string? newLocationFullPath = await AzureDocumentTransferNewLocation(uploadedFileDto.Path, newFolderPath);
+            return new UploadedFileResponseDto { Id = uploadedFile.Id, Path = newLocationFullPath };
+
+        }
+
         private static string DocumentTransferNewLocation(string fileFullPath, string newFolder, string webRootPath)
         {
             var fileName = Path.GetFileName(fileFullPath);
@@ -74,5 +94,27 @@ namespace webAPI.Application.Services.UploadedFileService
             File.Move(oldLocation, newLocation, false);
             return newLocation;
         }
+
+        private async Task<string> AzureDocumentTransferNewLocation(string fileFullPath, string newFolder)
+        {
+            ConfigurationListModelDto? configurationList = _configurationService.GetConfigurationList();
+            KeyVaultSecret secretBlobStorage = configurationList.SecretClient.GetSecret("MyBlogBlobStorageConfig");
+            string? azureBlobConnectionString = secretBlobStorage.Value;
+            string? azureBlobContainerName = "myblogfiles";
+            AzureBlobStorageService azureBlobStorageService = new AzureBlobStorageService(azureBlobConnectionString, azureBlobContainerName);
+            var fileName = Path.GetFileName(fileFullPath);
+            var oldLocation = Path.Combine(fileFullPath.Replace("/", "\\"));
+            var newLocation = FileHelper.AzureGetNewPath(newFolder, fileName);
+            if (File.Exists(newLocation))
+            {
+                var extension = Path.GetExtension(fileName);
+                fileName = Guid.NewGuid().ToString() + extension;
+                newLocation = Path.Combine(newFolder, fileName);
+            }
+            await azureBlobStorageService.MoveFileAsync(oldLocation, newLocation);
+            return newLocation;
+        }
+
+
     }
 }

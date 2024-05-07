@@ -7,5 +7,6 @@ namespace webAPI.Application.Services.UploadedFileService
     {
         Task<UploadedFile> AddOrUpdateDocument(UploadedFileDto uploadedFileDto);
         Task<UploadedFileResponseDto?> TransferFile(string token, string newFolderPath, string webRootPath);
+        Task<UploadedFileResponseDto?> AzureTransferFileAsync(string token, string newFolderPath);
     }
 }

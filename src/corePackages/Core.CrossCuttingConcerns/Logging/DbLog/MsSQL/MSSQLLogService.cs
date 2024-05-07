@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Azure.Security.KeyVault.Secrets;
 using Core.CrossCuttingConcerns.Logging.DbLog.Dto;
 using Core.CrossCuttingConcerns.Logging.DbLog.MsSQL.Contexts;
 using Core.Domain.Entities;
+using Core.Helpers.Services.ConfigurationServices;
+using Core.Helpers.Services.ConfigurationServices.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -11,11 +14,13 @@ namespace Core.CrossCuttingConcerns.Logging.DbLog.MsSQL
     {
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IConfigurationService _configurationService;
 
-        public MsSqlLogService(IConfiguration configuration, IMapper mapper)
+        public MsSqlLogService(IConfiguration configuration, IMapper mapper, IConfigurationService configurationService)
         {
             _configuration = configuration;
             _mapper = mapper;
+            _configurationService = configurationService;
         }
 
         public async Task CreateLog(LogDto logDto)
@@ -41,8 +46,10 @@ namespace Core.CrossCuttingConcerns.Logging.DbLog.MsSQL
 
         private LogDbContext createDbContext()
         {
+            ConfigurationListModelDto? configurationList = _configurationService.GetConfigurationList();
+            KeyVaultSecret databaseConnectionString = configurationList.SecretClient.GetSecret("MyBlogDatabaseConnectionString");
             var builder = new DbContextOptionsBuilder<LogDbContext>();
-            builder.UseSqlServer(_configuration.GetConnectionString("ConnectionString"));
+            builder.UseSqlServer(databaseConnectionString.Value);
             return new LogDbContext(builder.Options);
         }
     }
